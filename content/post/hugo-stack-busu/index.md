@@ -2,7 +2,7 @@
 title: "在Windows上使用Hugo+GitHub Pages搭建个人博客全记录"
 description: "手把手教你通过Hugo静态生成器stack主题与GitHub Pages在Windows系统部署个人博客"  # 新增SEO摘要
 date: 2022-02-20T15:32:00+08:00
-draft: true  # 发布前改为false
+draft: false  # 发布前改为false
 categories: ["捯饬博客"]
 tags: ["Hugo", "GitHub Pages", "博客搭建", "stack主题"]  # 新增Utterances标签
 license: "CC-BY-SA-4.0"  # 新增知识共享协议
@@ -44,13 +44,13 @@ Copy-Item themes/stack/exampleSite/config.yaml ./config.yaml -Recurse
 关键配置项：
 
 ```yaml
-baseURL: "https://n10.github.io/"
+baseURL: "https://n10dz.github.io/"
 theme: stack
 params:
   sidebar:
     enabled: true
   social:
-    GitHub: "https://github.com/n10dz/n10.github.io"
+    GitHub: "https://github.com/n10dz/n10dz.github.io"
 ```
 
 ## 分支策略
@@ -74,7 +74,7 @@ git checkout -b main
 ### 1. 推送源码到main分支
 
 ```powershell
-git remote add origin https://github.com/n10dz/n10.github.io.git
+git remote add origin https://github.com/n10dz/n10dz.github.io.git
 git add .
 git commit -m "Initial commit"
 git push -u origin main
@@ -136,6 +136,6 @@ jobs:
 ## 成果预览
 
 访问你的GitHub Pages地址：
-[https://n10.github.io](https://n10.github.io/)
+[https://n10dz.github.io](https://n10dz.github.io/)
 
 至此，你已经拥有了一个完全免费、可自定义且支持自动化部署的现代博客系统。接下来可以开始创作你的技术文章啦！
