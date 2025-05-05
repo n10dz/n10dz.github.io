@@ -1,0 +1,37 @@
+name: GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-22.04
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+          fetch-depth: 0
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: '0.146.7'
+          extended: true
+
+      - name: Build
+        run: hugo --minify
+        # Update the path below if your Hugo project is not in ./Blog
+        working-directory: . 
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        if: github.ref == 'refs/heads/main'
+        with:
+          PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PUBLISH_DIR: ./public # Update this path if necessary
+          EXTERNAL_REPOSITORY: n10dz/n10dz.github.io
