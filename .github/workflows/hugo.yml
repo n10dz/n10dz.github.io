@@ -25,13 +25,14 @@ jobs:
 
       - name: Build
         run: hugo --minify
-        # Update the path below if your Hugo project is not in ./Blog
-        working-directory: . 
+        working-directory: .
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         if: github.ref == 'refs/heads/main'
         with:
-          PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PUBLISH_DIR: ./public # Update this path if necessary
-          EXTERNAL_REPOSITORY: n10dz/n10dz.github.io
+          github_token: ${{ secrets.ACTIONS_DEPLOY_KEY }} # Replace with a deploy key or PAT
+          publish_dir: ./public # Update this path if necessary
+          external_repository: n10dz/n10dz.github.io
+          publish_branch: gh-pages
+          force_orphan: true # Ensures the branch is created if it doesn't exist
