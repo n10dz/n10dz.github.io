@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
-    <head>
-	<meta name="generator" content="Hugo 0.146.7"><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Let's get some fries at the dock">
-<title>N10-Blog</title>
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="麒麟系统无法上网。DNS服务器被强制设置为`127.0.0.53`手动修改`/etc/resolv.conf`后重启系统或网络服务时配置被覆盖。">
+<title>解决国产信创Linux系统DNS服务器被强制设置为`127.0.0.53`问题</title>
 
-<link rel='canonical' href='https://n10dz.github.io/'>
+<link rel='canonical' href='https://n10dz.github.io/p/%E8%A7%A3%E5%86%B3%E5%9B%BD%E4%BA%A7%E4%BF%A1%E5%88%9Blinux%E7%B3%BB%E7%BB%9Fdns%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%A2%AB%E5%BC%BA%E5%88%B6%E8%AE%BE%E7%BD%AE%E4%B8%BA127.0.0.53%E9%97%AE%E9%A2%98/'>
 
-<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="N10-Blog">
-<meta property='og:description' content="Let's get some fries at the dock">
-<meta property='og:url' content='https://n10dz.github.io/'>
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="解决国产信创Linux系统DNS服务器被强制设置为`127.0.0.53`问题">
+<meta property='og:description' content="麒麟系统无法上网。DNS服务器被强制设置为`127.0.0.53`手动修改`/etc/resolv.conf`后重启系统或网络服务时配置被覆盖。">
+<meta property='og:url' content='https://n10dz.github.io/p/%E8%A7%A3%E5%86%B3%E5%9B%BD%E4%BA%A7%E4%BF%A1%E5%88%9Blinux%E7%B3%BB%E7%BB%9Fdns%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%A2%AB%E5%BC%BA%E5%88%B6%E8%AE%BE%E7%BD%AE%E4%B8%BA127.0.0.53%E9%97%AE%E9%A2%98/'>
 <meta property='og:site_name' content='N10-Blog'>
-<meta property='og:type' content='website'><meta property='og:updated_time' content=' 2025-05-05T19:38:18&#43;08:00 '/>
-<meta name="twitter:title" content="N10-Blog">
-<meta name="twitter:description" content="Let's get some fries at the dock"><link rel="alternate" type="application/rss&#43;xml" href="https://n10dz.github.io/index.xml">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='信创' /><meta property='article:tag' content='Linux' /><meta property='article:published_time' content='2025-03-20T16:45:00&#43;08:00'/><meta property='article:modified_time' content='2025-05-05T18:51:11&#43;08:00'/>
+<meta name="twitter:title" content="解决国产信创Linux系统DNS服务器被强制设置为`127.0.0.53`问题">
+<meta name="twitter:description" content="麒麟系统无法上网。DNS服务器被强制设置为`127.0.0.53`手动修改`/etc/resolv.conf`后重启系统或网络服务时配置被覆盖。">
     <link rel="shortcut icon" href="/favicon.svg" />
 
 <style>
@@ -117,7 +116,9 @@ document.addEventListener('DOMContentLoaded', function() {
     </head>
 
     </body>
-    <body class="">
+    <body class="
+    article-page
+    ">
     <script>
         (function() {
             const colorSchemeKey = 'StackColorScheme';
@@ -352,69 +353,10 @@ document.addEventListener('DOMContentLoaded', function() {
     <aside class="sidebar right-sidebar sticky">
         
             
-                <form action="/search/" class="search-form widget" >
-        <p>
-            <label>搜索</label>
-            <input name="keyword" required placeholder="输入关键词..." />
-        
-            <button title="搜索">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="10" cy="10" r="7" />
-  <line x1="21" y1="21" x2="15" y2="15" />
-</svg>
-
-
-
-            </button>
-        </p>
-    </form>
-            
-        
-            
-                <section class="widget archives">
+                
+    <section class="widget archives">
         <div class="widget-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-infinity" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M9.828 9.172a4 4 0 1 0 0 5.656 a10 10 0 0 0 2.172 -2.828a10 10 0 0 1 2.172 -2.828 a4 4 0 1 1 0 5.656a10 10 0 0 1 -2.172 -2.828a10 10 0 0 0 -2.172 -2.828" />
-</svg>
-
-
-
-        </div>
-        <h2 class="widget-title section-title">归档</h2>
-
-        
-        
-        
-        
-        
-        <div class="widget-archive--list">
-            <div class="archives-year">
-                    <a href="/archives/#2025">
-                        
-                            <span class="year">2025</span>
-                            <span class="count">1</span>
-                        
-                    </a> 
-                </div>
-            <div class="archives-year">
-                    <a href="/archives/#2022">
-                        
-                            <span class="year">2022</span>
-                            <span class="count">1</span>
-                        
-                    </a> 
-                </div>
-            
-        </div>
-    </section>
-            
-        
-            
-                <section class="widget tagCloud">
-    <div class="widget-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <line x1="5" y1="9" x2="19" y2="9" />
   <line x1="5" y1="15" x2="19" y2="15" />
@@ -424,81 +366,45 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-    </div>
-    <h2 class="widget-title section-title">分类</h2>
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#问题现象">问题现象</a></li>
+    <li><a href="#解决方案">解决方案</a>
+      <ol>
+        <li><a href="#一临时修改dns重启后失效">一：临时修改DNS（重启后失效）</a></li>
+        <li><a href="#二永久解决方案推荐">二：永久解决方案（推荐）</a>
+          <ol>
+            <li><a href="#步骤1停用systemd-resolved服务">步骤1：停用systemd-resolved服务</a></li>
+            <li><a href="#步骤2安装unbound解析器">步骤2：安装unbound解析器</a></li>
+            <li><a href="#步骤3配置networkmanager">步骤3：配置NetworkManager</a></li>
+            <li><a href="#步骤4应用配置">步骤4：应用配置</a></li>
+          </ol>
+        </li>
+        <li><a href="#验证结果">验证结果</a></li>
+        <li><a href="#技术原理">📌技术原理</a></li>
+        <li><a href="#故障排查">故障排查</a>
+          <ol>
+            <li><a href="#如遇网络异常可通过以下命令恢复">如遇网络异常，可通过以下命令恢复：</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
 
-    <div class="tagCloud-tags">
-        
-            <a href="/categories/%E5%85%B3%E4%BA%8E%E8%BF%90%E7%BB%B4/" class="font_size_1">
-                关于运维
-            </a>
-        
-            <a href="/categories/%E6%8D%AF%E9%A5%AC%E5%8D%9A%E5%AE%A2/" class="font_size_1">
-                捯饬博客
-            </a>
-        
-    </div>
-</section>
-
-            
-        
-            
-                <section class="widget tagCloud">
-    <div class="widget-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
-  <circle cx="9" cy="9" r="2" />
-</svg>
-
-
-
-    </div>
-    <h2 class="widget-title section-title">标签云</h2>
-
-    <div class="tagCloud-tags">
-        
-            <a href="/tags/github-pages/" class="font_size_1">
-                GitHub Pages
-            </a>
-        
-            <a href="/tags/hugo/" class="font_size_1">
-                Hugo
-            </a>
-        
-            <a href="/tags/linux/" class="font_size_1">
-                Linux
-            </a>
-        
-            <a href="/tags/stack%E4%B8%BB%E9%A2%98/" class="font_size_1">
-                Stack主题
-            </a>
-        
-            <a href="/tags/%E4%BF%A1%E5%88%9B/" class="font_size_1">
-                信创
-            </a>
-        
-            <a href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" class="font_size_1">
-                博客搭建
-            </a>
-        
-    </div>
-</section>
             
         
     </aside>
 
 
             <main class="main full-width">
-    
-    
-    
-    
-
-    <section class="article-list">
-        
-            
-<article class="">
+    <article class="main-article">
     <header class="article-header">
 
     <div class="article-details">
@@ -578,58 +484,167 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 
 </header>
-</article>
-        
-            
-<article class="">
-    <header class="article-header">
 
-    <div class="article-details">
+    <section class="article-content">
     
-    <header class="article-category">
-        
-            <a href="/categories/%E6%8D%AF%E9%A5%AC%E5%8D%9A%E5%AE%A2/" >
-                捯饬博客
-            </a>
-        
-    </header>
     
+    <p>本文针对麒麟、统信UOS、Ubuntu等Linux发行版中出现的<code>/etc/resolv.conf</code>文件被强制重置为<code>127.0.0.53</code>问题，提供两种解决方案。</p>
+<h2 id="问题现象">问题现象
+</h2><ul>
+<li>麒麟系统无法上网，打不开网页。</li>
+<li>手动修改<code>/etc/resolv.conf</code>后，重启系统或网络服务时配置被覆盖。</li>
+<li>DNS服务器被强制设置为<code>127.0.0.53</code>（systemd-resolved服务地址）。</li>
+</ul>
+<h2 id="解决方案">解决方案
+</h2><h3 id="一临时修改dns重启后失效">一：临时修改DNS（重启后失效）
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 编辑DNS配置文件</span>
+</span></span><span class="line"><span class="cl">sudo vim /etc/resolv.conf
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 替换为以下内容（示例使用Google DNS）</span>
+</span></span><span class="line"><span class="cl">nameserver 8.8.8.8  
+</span></span><span class="line"><span class="cl">nameserver 8.8.4.4
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="二永久解决方案推荐">二：永久解决方案（推荐）
+</h3><h4 id="步骤1停用systemd-resolved服务">步骤1：停用systemd-resolved服务
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo systemctl stop systemd-resolved
+</span></span><span class="line"><span class="cl">sudo systemctl disable systemd-resolved
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="步骤2安装unbound解析器">步骤2：安装unbound解析器
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt update <span class="o">&amp;&amp;</span> sudo apt install unbound -y
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="步骤3配置networkmanager">步骤3：配置NetworkManager
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo vim /etc/NetworkManager/NetworkManager.conf
+</span></span><span class="line"><span class="cl"><span class="c1">#在 [main] 段落添加配置：</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">ini
+</span></span><span class="line"><span class="cl"><span class="nv">dns</span><span class="o">=</span>unbound
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="步骤4应用配置">步骤4：应用配置
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo systemctl restart NetworkManager
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="验证结果">验证结果
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cat /etc/resolv.conf  <span class="c1"># 应显示实际配置的DNS服务器</span>
+</span></span><span class="line"><span class="cl">ping baidu.com        <span class="c1"># 测试网络连通性</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="技术原理">📌技术原理
+</h3><p>systemd-resolved 是新一代DNS解析服务，会强制接管DNS配置。本方案通过：</p>
+<ol>
+<li>用unbound替代默认解析器</li>
+<li>修改NetworkManager的DNS管理策略</li>
+<li>建立稳定的DNS配置托管机制</li>
+</ol>
+<h3 id="故障排查">故障排查
+</h3><h4 id="如遇网络异常可通过以下命令恢复">如遇网络异常，可通过以下命令恢复：
+</h4><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo systemctl <span class="nb">enable</span> systemd-resolved --now
+</span></span><span class="line"><span class="cl">sudo rm /etc/NetworkManager/conf.d/dns.conf
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>本文适用于以下国产信创系统：
+麒麟Kylin V10
+统信UOS 20
+Ubuntu 18.04+/Debian 10+</p></blockquote>
 
-    <div class="article-title-wrapper">
-        <h2 class="article-title">
-            <a href="/p/%E5%9C%A8windows%E4%B8%8A%E4%BD%BF%E7%94%A8hugo-github-pages%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%85%A8%E8%AE%B0%E5%BD%95/">在Windows上使用Hugo&#43;GitHub Pages搭建个人博客全记录</a>
-        </h2>
+</section>
+
+
+    <footer class="article-footer">
     
+    <section class="article-tags">
         
-        <h3 class="article-subtitle">
-            手把手教你通过Hugo静态生成器stack主题与GitHub Pages在Windows系统部署个人博客
-        </h3>
+            <a href="/tags/%E4%BF%A1%E5%88%9B/">信创</a>
         
-    </div>
+            <a href="/tags/linux/">Linux</a>
+        
+    </section>
+
 
     
-    
-    
-    
-    <footer class="article-time">
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
-  <circle cx="18" cy="18" r="4" />
-  <path d="M15 3v4" />
-  <path d="M7 3v4" />
-  <path d="M3 11h16" />
-  <path d="M18 16.496v1.504l1 1" />
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
 </svg>
-                <time class="article-time--published">2022-02-20</time>
-            </div>
-        
 
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    
+    
+    
+    <section class="article-edit">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+        <span>
+            <a href="https://github.com/n10dz/n10dz.github.io/edit/main/content/post/linux-DNS-xf/index.md" 
+               target="_blank" 
+               rel="noopener noreferrer">
+                在 GitHub 上编辑此页
+            </a>
+        </span>
+    </section>
+    <section class="article-lastmod">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="12" cy="12" r="9" />
   <polyline points="12 7 12 12 15 15" />
@@ -637,34 +652,71 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-                <time class="article-time--reading">
-                    阅读时长: 2 分钟
-                </time>
-            </div>
-        
-    </footer>
-    
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-pencil" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-    <path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4"></path>
-    <path d="M13.5 6.5l4 4"></path>
-</svg>
-                <time class="article-words">
-                    685 字
-                </time>
-            </div>
-        
+        <span>
+            最后更新于 2025-05-05 18:51 CST
+        </span>
+    </section></footer>
+
 
     
-</div>
-
-</header>
 </article>
+
+    
+
+    
+
+     
+    
         
-    </section>
-<footer class="site-footer">
+    <script src="https://utteranc.es/client.js" 
+        repo="n10dz/n10dz.github.io"
+        issue-term="pathname"
+        
+        crossorigin="anonymous"
+        async
+        >
+</script>
+
+<style>
+    .utterances {
+        max-width: unset;
+    }
+</style>
+
+<script>
+    let utterancesLoaded = false;
+
+    function setUtterancesTheme(theme) {
+        let utterances = document.querySelector('.utterances iframe');
+        if (utterances) {
+            utterances.contentWindow.postMessage(
+                {
+                    type: 'set-theme',
+                    theme: `github-${theme}`
+                },
+                'https://utteranc.es'
+            );
+        }
+    }
+
+    addEventListener('message', event => {
+        if (event.origin !== 'https://utteranc.es') return;
+
+        
+        utterancesLoaded = true;
+        setUtterancesTheme(document.documentElement.dataset.scheme)
+    });
+
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (!utterancesLoaded) return;
+        setUtterancesTheme(e.detail)
+    })
+</script>
+
+
+    
+
+    <footer class="site-footer">
     <section class="copyright">
         &copy; 
         
@@ -678,6 +730,85 @@ document.addEventListener('DOMContentLoaded', function() {
         主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
     </section>
 </footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
 
             </main>
         </div>

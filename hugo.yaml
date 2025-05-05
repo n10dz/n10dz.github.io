@@ -213,6 +213,12 @@ menu:
           weight: -100
           params:
             icon: home
+        - identifier: about
+          name: "关于"
+          url: /about/
+          weight: -10
+          params:
+            icon: user
             newTab: true  # newTab: 在新标签页打开链接
 
     social:

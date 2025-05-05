@@ -1,5 +1,6 @@
 ---
-title: "解决国产信创Linux系统DNS配置被重置问题"
+title: "解决国产信创Linux系统DNS服务器被强制设置为`127.0.0.53`问题"
+description: "麒麟系统无法上网。DNS服务器被强制设置为`127.0.0.53`手动修改`/etc/resolv.conf`后重启系统或网络服务时配置被覆盖。"
 date: 2025-03-20T16:45:00+08:00
 draft: false
 categories: ["关于运维"]
