@@ -31,7 +31,7 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         if: github.ref == 'refs/heads/main'
         with:
-          github_token: ${{ secrets.ACTION_TOKEN }} # Replace with a deploy key or PAT
+          personal_token: ${{ secrets.PAT_TOKEN }} # Replace with a deploy key or PAT
           publish_dir: ./public # Update this path if necessary
           external_repository: n10dz/n10dz.github.io
           publish_branch: gh-pages
