@@ -86,7 +86,7 @@ params:
             adminLabel:
 
         utterances:
-            repo: "n10dz/n10.github.io"
+            repo: "n10dz/n10dz.github.io"
             issueTerm: pathname
             label:
 
@@ -291,4 +291,4 @@ frontmatter:
   lastmod: [":git", "lastmod", ":fileModTime", ":default"]    
   
 enableGitInfo: true
-gitRepo: "https://github.com/n10dz/n10.github.io"
+gitRepo: "https://github.com/n10dz/n10dz.github.io"

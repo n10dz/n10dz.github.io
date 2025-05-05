@@ -1,17 +1,10 @@
 @echo off
-REM 生成静态文件
+REM ���ɾ�̬�ļ�
 hugo -D
 
-REM 进入public目录提交
-cd public
+REM �ύԴ��
 git add .
-git commit -m "自动部署: %date% %time%"
-git push -f origin gh-pages
-cd ..
-
-REM 提交源码（可选）
-git add .
-git commit -m "更新源码: %date% %time%"
-git push -f origin main
+git commit -m "����: %date% %time%"
+git push  origin main
 
 pause

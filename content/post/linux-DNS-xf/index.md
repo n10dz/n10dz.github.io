@@ -70,8 +70,7 @@ systemd-resolved 是新一代DNS解析服务，会强制接管DNS配置。本方
 sudo systemctl enable systemd-resolved --now
 sudo rm /etc/NetworkManager/conf.d/dns.conf
 ```
-> [!NOTE]
->
+
 > 本文适用于以下国产信创系统：
 > 麒麟Kylin V10
 > 统信UOS 20
