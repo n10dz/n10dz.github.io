@@ -1,5 +1,5 @@
 ---
-title: "归档"
+title: "文章"
 date: 2024-01-01
 layout: "archives"
 slug: "archives"
@@ -8,4 +8,5 @@ menu:
         weight: -70
         params: 
             icon: archives
+            newTab: true
 ---

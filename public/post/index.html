@@ -6,11 +6,11 @@
 
 <link rel='canonical' href='https://n10dz.github.io/post/'>
 
-<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="Posts">
+<link rel="stylesheet" href="/scss/style.min.33e20cf53527ee2db5ee44629afd8a06d77bd8aa6c70a6e67773517cbb044d44.css"><meta property='og:title' content="Posts">
 <meta property='og:description' content="Let's get some fries at the dock">
 <meta property='og:url' content='https://n10dz.github.io/post/'>
 <meta property='og:site_name' content='N10-Blog'>
-<meta property='og:type' content='website'><meta property='og:updated_time' content=' 2025-05-05T19:38:18&#43;08:00 '/>
+<meta property='og:type' content='website'><meta property='og:updated_time' content=' 2025-05-05T19:38:49&#43;08:00 '/>
 <meta name="twitter:title" content="Posts">
 <meta name="twitter:description" content="Let's get some fries at the dock"><link rel="alternate" type="application/rss&#43;xml" href="https://n10dz.github.io/post/index.xml">
     <link rel="shortcut icon" href="/favicon.svg" />
@@ -263,7 +263,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         
         <li >
-            <a href='/archives/' >
+            <a href='/archives/' target="_blank">
                 
                 
                 
@@ -277,7 +277,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
                 
-                <span>归档</span>
+                <span>文章</span>
             </a>
         </li>
         
@@ -552,7 +552,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
-            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script><script type="text/javascript" src="/ts/custom.89d9bb2c3c071ae8a261f67661c22b84ef67ba7b7a885dabd2bbd9ebef84ed40.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');
@@ -575,5 +575,15 @@ document.addEventListener('DOMContentLoaded', function() {
       --code-font-family: 'MapleMono2';
     }
   </style>
+<script src="https://npm.elemecdn.com/nprogress@0.2.0/nprogress.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://npm.elemecdn.com/nprogress@0.2.0/nprogress.css" crossorigin="anonymous" />
+<script>
+    NProgress.start();
+    document.addEventListener("readystatechange", () => {
+        if (document.readyState === "interactive") NProgress.inc(0.8);
+        if (document.readyState === "complete") NProgress.done();
+    });
+</script>
+
     </body>
 </html>
