@@ -328,20 +328,6 @@
   transform: scale(1.03, 1.03);
 }
 
-/*主页布局间距调整*/
-.main-container {
-  gap: 50px; //文章宽度
-
-  @include respond(md) {
-    padding: 0 30px;
-    gap: 40px; //中等屏幕时的文章宽度
-  }
-}
-
-.related-contents {
-  overflow-x: visible; //显示隐藏的图标
-  padding-bottom: 15px;
-}
 
 /*------------------右侧导航栏--------------*/
 // 搜索菜单动画
@@ -494,34 +480,5 @@
     background-position: -1px 2px;
   }
 }
-
-//代码复制按钮
-.article-content .copyCodeButton {
-  position: absolute;
-  top: 10px;
-  right: 18px;
-  border-radius: 12px;
-  opacity: 1;
-  color: #ffffffad;
-  background: none;
-  border: none;
-  padding: 0;
-  font-weight: 500;
-}
-
-.article-content .languageCodeButton {
-  position: absolute;
-  border: none;
-  top: 9px;
-  right: 69px;
-  border-radius: 12px;
-  opacity: 1;
-  padding: 0 5px;
-  background: 0;
-  color: #ffffffad;
-  font-family: lato;
-  font-size: 1.5rem;
-}
-
 
   /* Place your custom SCSS in HUGO_SITE_FOLDER/assets/scss/custom.scss */
