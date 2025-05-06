@@ -5,6 +5,6 @@ hugo -D
 REM 提交源码
 git add .
 git commit -m "推送: %date% %time%"
-git push  origin main
+git push  -f origin main
 
 pause
