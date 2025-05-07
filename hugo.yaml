@@ -71,6 +71,7 @@ params:
                 maxSnippet: -1       # 最大摘要长度
                 maxImagePreview: "large"  # 最大图片预览
                 maxVideoPreview: -1  # 最大视频预览
+        googleSiteVerification: "x0DGj2GwixcIjqjo7V4z0EPRdNyCxfvaRFaqrZfJY1Y"  # Google Search Console 验证码
 
     # 页脚配置
     footer:
