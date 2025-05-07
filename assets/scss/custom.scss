@@ -466,19 +466,4 @@
   }
 }
 
-// macOS 风格代码块
-.article-content {
-  .highlight:before {
-    content: '';
-    display: block;
-    background: url(/code-header.svg);
-    height: 32px;
-    width: 100%;
-    background-size: 57px;
-    background-repeat: no-repeat;
-    margin-bottom: 5px;
-    background-position: -1px 2px;
-  }
-}
-
   /* Place your custom SCSS in HUGO_SITE_FOLDER/assets/scss/custom.scss */
