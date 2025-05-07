@@ -1,303 +1,349 @@
-baseurl: "https://n10dz.github.io/"
-languageCode: zh-cn
-theme: stack
-# paginate: 10
-title: "N10-Blog"
-copyright: "辽西聂德住"
+# 网站基础配置
+baseurl: "https://n10dz.github.io/"  # 网站的基础URL
+languageCode: zh-cn                  # 网站默认语言代码
+theme: stack                         # 使用的主题名称
+# paginate: 10                       # 每页显示的文章数量（已注释）
+title: "N10-Blog"                    # 网站标题
+copyright: "辽西聂德住"              # 网站版权信息
 
-# Theme i18n support
-# Available values: ar, bn, ca, de, el, en, es, fr, hu, id, it, ja, ko, nl, pt-br, th, uk, zh-cn, zh-hk, zh-tw
-DefaultContentLanguage: zh-cn
+# 主题国际化支持
+# 可选值: ar, bn, ca, de, el, en, es, fr, hu, id, it, ja, ko, nl, pt-br, th, uk, zh-cn, zh-hk, zh-tw
+DefaultContentLanguage: zh-cn        # 默认内容语言
 
-# Set hasCJKLanguage to true if DefaultContentLanguage is in [zh-cn ja ko]
-# This will make .Summary and .WordCount behave correctly for CJK languages.
+# 如果默认语言是中文、日语或韩语，设置为true
+# 这将使.Summary和.WordCount对CJK语言正确工作
 hasCJKLanguage: true
 
+# 多语言配置
 languages:
-    zh-cn:
-        languageName: 中文
-        title: N10-Blog
-        weight: 1
-        params:
-            sidebar:
-                subtitle: Let's get some fries at the dock
+    zh-cn:                          # 中文配置
+        languageName: 中文           # 语言名称
+        title: N10-Blog             # 该语言下的网站标题
+        weight: 1                    # 语言权重
 
 
+# 第三方服务配置
 services:
-    # Change it to your Disqus shortname before using
+    # 评论系统配置
     disqus:
-        shortname: "hugo-theme-stack"
-    # GA Tracking ID
+        shortname: "hugo-theme-stack"  # Disqus短名称
+    # Google Analytics配置
     googleAnalytics:
-        id:
+        id:                           # GA跟踪ID
 
+# 分页配置
 pagination:
-    pagerSize: 3
+    pagerSize: 3                     # 分页器大小
 
+# 永久链接配置
 permalinks:
-    post: /p/:slug/
-    page: /:slug/
+    post: /p/:slug/                  # 文章永久链接格式
+    page: /:slug/                    # 页面永久链接格式
 
+# 主要参数配置
 params:
     mainSections:
-        - post
-    featuredImageField: image
-    rssFullContent: true
-    favicon:  /favicon.ico  # e.g.: favicon placed in `static/favicon.ico` of your site folder, then set this field to `/favicon.ico` (`/` is necessary)
+        - post                       # 主要内容区域
+    featuredImageField: image        # 特色图片字段
+    rssFullContent: true             # RSS是否包含完整内容
+    favicon:  /favicon.ico           # 网站图标路径
 
+    # SEO配置
+    seo:
+        title: "N10-Blog - 辽西聂德住的个人博客"  # 网站标题
+        description: "分享技术、生活和思考的个人博客"  # 网站描述
+        keywords: ["博客", "技术", "生活", "思考"]  # 网站关键词
+        author: "辽西聂德住"         # 作者名称
+        twitter:
+            site: "@n10_666"         # Twitter账号
+            creator: "@n10_666"      # Twitter创建者
+        openGraph:
+            enabled: true            # 启用OpenGraph
+            type: "website"          # 网站类型
+            siteName: "N10-Blog"     # 网站名称
+            locale: "zh_CN"          # 语言地区
+        robots:
+            index: true              # 允许搜索引擎索引
+            follow: true             # 允许搜索引擎跟踪链接
+            googleBot:
+                index: true          # 允许Google索引
+                follow: true         # 允许Google跟踪链接
+                maxSnippet: -1       # 最大摘要长度
+                maxImagePreview: "large"  # 最大图片预览
+                maxVideoPreview: -1  # 最大视频预览
+
+    # 页脚配置
     footer:
-        since: 2020
-        customText: 
+        since: 2020                  # 网站起始年份
+        customText:                  # 自定义页脚文本
 
+    # 日期格式配置
     dateFormat:
-        published: "2006-01-02" 
-        lastUpdated: "2006-01-02 15:04 MST"
+        published: "2006-01-02"      # 发布日期格式
+        lastUpdated: "2006-01-02 15:04 MST"  # 最后更新日期格式
 
+    # 侧边栏配置
     sidebar:
-        emoji: 🍟
-        subtitle:  Let's get some fries at the dock
-        avatar:
-            enabled: true
-            local: true
-            src: img/avatar.png
+        emoji: 🍟                    # 侧边栏表情
+        subtitle:  Let's get some fries at the dock  # 侧边栏副标题
+        avatar:                      # 头像配置
+            enabled: true            # 是否启用头像
+            local: true              # 是否使用本地头像
+            src: img/avatar.png      # 头像图片路径
 
-          
+    # 文章配置
     article:
-        math: false
-        toc: true
-        readingTime: true
-        wordCount: true
-        license:
-            enabled: true
-            default: Licensed under CC BY-NC-SA 4.0
-        edit:
-            enabled: true                  # GitHub 编辑
-        wordCount: true                   # 字数统计
+        math: false                  # 是否启用数学公式
+        toc: true                    # 是否显示目录
+        readingTime: true            # 是否显示阅读时间
+        wordCount: true              # 是否显示字数统计
+        license:                     # 文章许可配置
+            enabled: true            # 是否启用许可
+            default: Licensed under CC BY-NC-SA 4.0  # 默认许可协议
+        edit:                        # 编辑配置
+            enabled: true            # 是否启用GitHub编辑
 
+    # 评论系统配置
     comments:
-        enabled: true
-        provider: utterances
+        enabled: true                # 是否启用评论
+        provider: utterances         # 评论提供商
 
+        # DisqusJS配置
         disqusjs:
-            shortname:
-            apiUrl:
-            apiKey:
-            admin:
-            adminLabel:
+            shortname:               # Disqus短名称
+            apiUrl:                  # API地址
+            apiKey:                  # API密钥
+            admin:                   # 管理员
+            adminLabel:              # 管理员标签
 
+        # Utterances配置
         utterances:
-            repo: "n10dz/n10dz.github.io"
-            issueTerm: pathname
-            label:
+            repo: "n10dz/n10dz.github.io"  # GitHub仓库
+            issueTerm: pathname      # 问题术语
+            label:                   # 标签
 
+        # Beaudar配置
         beaudar:
-            repo:
-            issueTerm: pathname
-            label:
-            theme:
+            repo:                    # 仓库
+            issueTerm: pathname      # 问题术语
+            label:                   # 标签
+            theme:                   # 主题
 
+        # Remark42配置
         remark42:
-            host:
-            site:
-            locale:
+            host:                    # 主机
+            site:                    # 站点
+            locale:                  # 语言
 
+        # Vssue配置
         vssue:
-            platform:
-            owner:
-            repo:
-            clientId:
-            clientSecret:
-            autoCreateIssue: false
+            platform:                # 平台
+            owner:                   # 所有者
+            repo:                    # 仓库
+            clientId:                # 客户端ID
+            clientSecret:            # 客户端密钥
+            autoCreateIssue: false   # 自动创建问题
 
-        # Waline client configuration see: https://waline.js.org/en/reference/component.html
+        # Waline配置
         waline:
-            serverURL:
-            lang:
-            pageview:
-            emoji:
+            serverURL:               # 服务器URL
+            lang:                    # 语言
+            pageview:                # 页面浏览
+            emoji:                   # 表情
                 - https://unpkg.com/@waline/emojis@1.0.1/weibo
-            requiredMeta:
+            requiredMeta:            # 必需的元数据
                 - name
                 - email
                 - url
-            locale:
+            locale:                  # 本地化
                 admin: Admin
-                placeholder:
+                placeholder:         # 占位符
 
+        # Twikoo配置
         twikoo:
-            envId:
-            region:
-            path:
-            lang:
+            envId:                   # 环境ID
+            region:                  # 区域
+            path:                    # 路径
+            lang:                    # 语言
 
-        # See https://cactus.chat/docs/reference/web-client/#configuration for description of the various options
+        # Cactus配置
         cactus:
-            defaultHomeserverUrl: "https://matrix.cactus.chat:8448"
-            serverName: "cactus.chat"
-            siteName: "" # You must insert a unique identifier here matching the one you registered (See https://cactus.chat/docs/getting-started/quick-start/#register-your-site)
+            defaultHomeserverUrl: "https://matrix.cactus.chat:8448"  # 默认主服务器URL
+            serverName: "cactus.chat"  # 服务器名称
+            siteName: ""             # 站点名称
 
+        # Giscus配置
         giscus:
-            repo:
-            repoID:
-            category:
-            categoryID:
-            mapping:
-            lightTheme:
-            darkTheme:
-            reactionsEnabled: 1
-            emitMetadata: 0
+            repo:                    # 仓库
+            repoID:                  # 仓库ID
+            category:                # 分类
+            categoryID:              # 分类ID
+            mapping:                 # 映射
+            lightTheme:              # 亮色主题
+            darkTheme:               # 暗色主题
+            reactionsEnabled: 1      # 是否启用反应
+            emitMetadata: 0          # 是否发送元数据
 
+        # Gitalk配置
         gitalk:
-            owner:
-            admin:
-            repo:
-            clientID:
-            clientSecret:
-            proxy:
+            owner:                   # 所有者
+            admin:                   # 管理员
+            repo:                    # 仓库
+            clientID:                # 客户端ID
+            clientSecret:            # 客户端密钥
+            proxy:                   # 代理
 
+        # Cusdis配置
         cusdis:
-            host:
-            id:
-    widgets:  #小工具布局 
-        homepage:
-            - type: search
-            - type: archives
-              params:
-                  limit: 5
-            - type: categories
-              params:
-                  limit: 10
-            - type: tag-cloud
-              params:
-                  limit: 10
-        page:
-            - type: toc
+            host:                    # 主机
+            id:                      # ID
 
+    # 小工具布局配置
+    widgets:
+        homepage:                    # 首页小工具
+            - type: search           # 搜索框
+            - type: archives         # 归档
+              params:
+                  limit: 5           # 显示数量限制
+            - type: categories       # 分类
+              params:
+                  limit: 10          # 显示数量限制
+            - type: tag-cloud        # 标签云
+              params:
+                  limit: 10          # 显示数量限制
+        page:                        # 页面小工具
+            - type: toc              # 目录
+
+    # OpenGraph配置
     opengraph:
-        twitter:
-            # Your Twitter username
-            site:
+        twitter:                     # Twitter配置
+            site:                    # Twitter用户名
+            card: summary_large_image  # 卡片类型
 
-            # Available values: summary, summary_large_image
-            card: summary_large_image
-
+    # 默认图片配置
     defaultImage:
-        opengraph:
-            enabled: false
-            local: false
-            src:
+        opengraph:                   # OpenGraph图片
+            enabled: false           # 是否启用
+            local: false             # 是否本地
+            src:                     # 图片源
 
+    # 颜色方案配置
     colorScheme:
-        # Display toggle
-        toggle: true
+        toggle: true                 # 是否显示切换按钮
+        default: auto                # 默认方案
 
-        # Available values: auto, light, dark
-        default: auto
-
+    # 图片处理配置
     imageProcessing:
-        cover:
-            enabled: true
-        content:
-            enabled: true
-    assets:
-        fingerprint: true
+        cover:                       # 封面图片
+            enabled: true            # 是否启用
+        content:                     # 内容图片
+            enabled: true            # 是否启用
+    assets:                         # 资源文件配置
+        fingerprint: true            # 是否启用指纹
 
-### Custom menu
-### See https://stack.jimmycai.com/config/menu
-### To remove about, archive and search page menu item, remove `menu` field from their FrontMatter
+    # 站点统计配置
+    analytics:
+        umami:
+            enabled: true           # 启用 Umami 统计
+            scriptUrl: "https://cloud.umami.is/script.js"  # Umami 脚本地址
+            websiteId: "6d9a1db9-c802-4eba-afd2-b823eda08986"  # 网站 ID
+            dataAutoTrack: true     # 自动跟踪
+            dataDoNotTrack: true    # 尊重 Do Not Track
+            dataCache: true         # 启用缓存
+
+# 自定义菜单配置
 menu:
-    main:
-        - identifier: home
+    main:                           # 主导航菜单
+        - identifier: home           # 主页
           name: "主页"
           url: /
           weight: -100
           params:
             icon: home
-        - identifier: about
+        - identifier: about          # 关于
           name: "关于"
           url: /about/
           weight: -10
           params:
             icon: user
-            newTab: true  # newTab: 在新标签页打开链接
+            newTab: true            # 新标签页打开
 
-    social:
-        - identifier: github
+    social:                         # 社交链接
+        - identifier: github         # GitHub
           name: GitHub
           url: https://github.com/n10dz
           params:
               icon: github
 
-        - identifier: twitter
+        - identifier: twitter        # Twitter
           name: Twitter
           url: https://twitter.com/n10_666
           params:
               icon: X
               
-        - identifier: mail
+        - identifier: mail           # 邮箱
           name: Email
           url: "mailto:dp7100@126.com"
           params:
               icon: mail
 
-        - identifier: wechat
+        - identifier: wechat         # 微信
           name: WeChat
           url: "javascript:void(0)"
           params:
               icon: brand-wechat
 
-
-
+# 相关文章配置
 related:
-    includeNewer: true
-    threshold: 60
-    toLower: false
-    indices:
-        - name: tags
-          weight: 100
+    includeNewer: true              # 是否包含较新的文章
+    threshold: 60                   # 相关度阈值
+    toLower: false                  # 是否转换为小写
+    indices:                        # 索引配置
+        - name: tags                # 标签索引
+          weight: 100               # 权重
+        - name: categories          # 分类索引
+          weight: 200               # 权重
 
-        - name: categories
-          weight: 200
-
+# Markdown渲染配置
 markup:
-    goldmark:
+    goldmark:                       # Goldmark配置
         extensions:
-            passthrough:
+            passthrough:            # 直通配置
                 enable: true
                 delimiters:
-                    block:
+                    block:          # 块级分隔符
                         - - \[
                           - \]
                         - - $$
                           - $$
-                    inline:
+                    inline:         # 行内分隔符
                         - - \(
                           - \)
         renderer:
-            ## Set to true if you have HTML content inside Markdown
-            unsafe: true
-    tableOfContents:
-        endLevel: 4
-        ordered: true
-        startLevel: 2
-    highlight:
-        noClasses: false
-        codeFences: true
-        guessSyntax: true
-        lineNoStart: 1
-        lineNos: true
-        lineNumbersInTable: true
-        tabWidth: 4
+            unsafe: true            # 是否允许不安全的HTML
+    tableOfContents:                # 目录配置
+        endLevel: 4                 # 结束级别
+        ordered: true               # 是否有序
+        startLevel: 2               # 开始级别
+    highlight:                      # 代码高亮配置
+        noClasses: false            # 是否不使用类
+        codeFences: true            # 是否使用代码围栏
+        guessSyntax: true           # 是否猜测语法
+        lineNoStart: 1              # 行号起始
+        lineNos: true               # 是否显示行号
+        lineNumbersInTable: true    # 是否在表格中显示行号
+        tabWidth: 4                 # 制表符宽度
+
+# 前置元数据配置
 frontmatter:
-  # 按优先级排序：
-  # :git - 文件提交修改时间
-  # lastmod - 文章里 lastmod 字段
-  # :fileModTime - 文件修改时间
-  # :default - 默认时间
-  lastmod: [":git", "lastmod", ":fileModTime", ":default"]    
-  
-enableGitInfo: true
-gitRepo: "https://github.com/n10dz/n10dz.github.io"
+    lastmod: [":git", "lastmod", ":fileModTime", ":default"]  # 最后修改时间优先级
 
+# Git信息配置
+enableGitInfo: true                 # 是否启用Git信息
+gitRepo: "https://github.com/n10dz/n10dz.github.io"  # Git仓库地址
 
-# 站点统计<script defer src="https://cloud.umami.is/script.js" data-website-id="6d9a1db9-c802-4eba-afd2-b823eda08986"></script>
+# 站点地图配置
+sitemap:
+    changefreq: "weekly"            # 更新频率
+    priority: 0.5                   # 优先级
+    filename: "sitemap.xml"         # 站点地图文件名
