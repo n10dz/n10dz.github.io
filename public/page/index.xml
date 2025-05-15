@@ -8,20 +8,69 @@
         <language>zh-cn</language>
         <copyright>辽西聂德住</copyright>
         <lastBuildDate>Tue, 06 May 2025 18:08:26 +0800</lastBuildDate><atom:link href="https://n10dz.github.io/page/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>About</title>
-        <link>https://n10dz.github.io/about/</link>
-        <pubDate>Mon, 05 May 2025 19:38:18 +0800</pubDate>
-        
-        <guid>https://n10dz.github.io/about/</guid>
-        <description></description>
-        </item>
-        <item>
         <title>文章</title>
         <link>https://n10dz.github.io/archives/</link>
         <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
         
         <guid>https://n10dz.github.io/archives/</guid>
         <description></description>
+        </item>
+        <item>
+        <title>About</title>
+        <link>https://n10dz.github.io/about/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://n10dz.github.io/about/</guid>
+        <description>&lt;style&gt;
+.about-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.about-title {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 2em;
+    font-weight: normal;
+    border: none !important;
+    position: relative;
+}
+
+.about-title::before {
+    display: none !important;
+}
+
+.about-content {
+    font-size: 1.1em;
+    line-height: 1.8;
+}
+
+.about-note {
+    font-size: 0.95em;
+    color: #888;
+    margin-top: 0.5em;
+}
+
+.article-header, .article-footer, .article-metadata, .widget-toc {
+    display: none !important;
+}
+&lt;/style&gt;
+&lt;div class=&#34;about-page&#34;&gt;
+    &lt;h1 class=&#34;about-title&#34;&gt;欢迎来到我的新博客&lt;/h1&gt;
+    &lt;div class=&#34;about-content&#34;&gt;
+        &lt;blockquote&gt;
+            我为什么要说新博客呢？因为之前的博客被我一不小心delete了，找不回来了。😭
+        &lt;/blockquote&gt;
+        &lt;p&gt;
+            我是&lt;strong&gt;辽西聂德住&lt;/strong&gt;，一个生活在底层的IT运维牛马。你们也可以叫我&lt;strong&gt;N10&lt;/strong&gt;。
+        &lt;/p&gt;
+        &lt;p class=&#34;about-note&#34;&gt;
+            N10：取自我的姓氏聂的拼音首字母+笔画10笔
+        &lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</description>
         </item>
         <item>
         <title>搜索</title>
