@@ -184,9 +184,9 @@ while True:
 
 ![运行结果](zddl04.png)
 
-##  开机自动运行
+##  让脚本开机自动运行
 
-###  1.Windows系统
+###  Windows系统
 
 在windows下有一个自启动文件夹：
 
@@ -196,7 +196,7 @@ C:\Users\你的用户名称\AppData\Roaming\Microsoft\Windows\Start Menu\Program
 
 这个文件夹里放置的所有windows可识别文件都会在开机时自动执行。下面我们就使用这个文件夹进行部署。
 
-####  1).py文件直接部署
+####  py文件直接部署
 
 这是最简单的部署方法，前提电脑有python编译器支持。用bat批处理调用python编译器执行脚本：
 
@@ -206,7 +206,7 @@ start python /“文件目录”/login_network.py
 
 然后把bat文件放在前面说的**Startup**文件夹下即可。
 
-####  2).EXE部署
+####  EXE部署
 
 为了让没有python编译器也可以在任意windows系统运行。我们把py脚本打包成EXE可执行程序。但因为打包了python编译器，导致一个简单的脚本也需要很多mb的空间占用。
 
@@ -216,7 +216,7 @@ start python /“文件目录”/login_network.py
 pip install -U nuitka
 ```
 
-> #### Nuitka是什么？
+> **Nuitka是什么？**
 >
 > nuitka是一个用来将python代码打包为exe可执行文件，方便其在没有相关环境的windows系统上运行的工具。其原理为：将python代码（自己写的部分）转换成C代码，以提高运行的速度。
 

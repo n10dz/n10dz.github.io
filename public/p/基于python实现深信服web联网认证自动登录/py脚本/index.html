@@ -10,7 +10,7 @@
 <meta property='og:description' content="基于python在Windows上实现深信服Web联网认证开机自动登录互联网认证">
 <meta property='og:url' content='https://n10dz.github.io/p/%E5%9F%BA%E4%BA%8Epython%E5%AE%9E%E7%8E%B0%E6%B7%B1%E4%BF%A1%E6%9C%8Dweb%E8%81%94%E7%BD%91%E8%AE%A4%E8%AF%81%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95/py%E8%84%9A%E6%9C%AC/'>
 <meta property='og:site_name' content='N10-Blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Windows' /><meta property='article:tag' content='python' /><meta property='article:tag' content='脚本' /><meta property='article:tag' content='自动化' /><meta property='article:published_time' content='2025-05-15T19:51:08&#43;08:00'/><meta property='article:modified_time' content='2025-05-15T21:33:47&#43;08:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Windows' /><meta property='article:tag' content='python' /><meta property='article:tag' content='脚本' /><meta property='article:tag' content='自动化' /><meta property='article:published_time' content='2025-05-15T19:51:08&#43;08:00'/><meta property='article:modified_time' content='2025-05-15T21:45:43&#43;08:00'/>
 <meta name="twitter:title" content="基于python实现深信服Web联网认证自动登录/py脚本">
 <meta name="twitter:description" content="基于python在Windows上实现深信服Web联网认证开机自动登录互联网认证">
     <link rel="shortcut icon" href="/favicon.ico" />
@@ -375,13 +375,12 @@ document.addEventListener('DOMContentLoaded', function() {
     <li><a href="#前言">前言</a></li>
     <li><a href="#web登录页面分析">Web登录页面分析</a></li>
     <li><a href="#pycharm启动写脚本">PyCharm启动（写脚本）</a></li>
-    <li><a href="#开机自动运行">开机自动运行</a>
+    <li><a href="#让脚本开机自动运行">让脚本开机自动运行</a>
       <ol>
-        <li><a href="#1windows系统">1.Windows系统</a>
+        <li><a href="#windows系统">Windows系统</a>
           <ol>
-            <li><a href="#1py文件直接部署">1).py文件直接部署</a></li>
-            <li><a href="#2exe部署">2).EXE部署</a></li>
-            <li><a href="#nuitka是什么">Nuitka是什么？</a></li>
+            <li><a href="#py文件直接部署">py文件直接部署</a></li>
+            <li><a href="#exe部署">EXE部署</a></li>
           </ol>
         </li>
       </ol>
@@ -468,7 +467,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <path d="M13.5 6.5l4 4"></path>
 </svg>
                 <time class="article-words">
-                    3098 字
+                    3093 字
                 </time>
             </div>
         
@@ -828,8 +827,8 @@ document.addEventListener('DOMContentLoaded', function() {
 		data-flex-basis="553px"
 	
 ></p>
-<h2 id="开机自动运行">开机自动运行
-</h2><h3 id="1windows系统">1.Windows系统
+<h2 id="让脚本开机自动运行">让脚本开机自动运行
+</h2><h3 id="windows系统">Windows系统
 </h3><p>在windows下有一个自启动文件夹：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -840,7 +839,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>这个文件夹里放置的所有windows可识别文件都会在开机时自动执行。下面我们就使用这个文件夹进行部署。</p>
-<h4 id="1py文件直接部署">1).py文件直接部署
+<h4 id="py文件直接部署">py文件直接部署
 </h4><p>这是最简单的部署方法，前提电脑有python编译器支持。用bat批处理调用python编译器执行脚本：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -851,7 +850,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>然后把bat文件放在前面说的<strong>Startup</strong>文件夹下即可。</p>
-<h4 id="2exe部署">2).EXE部署
+<h4 id="exe部署">EXE部署
 </h4><p>为了让没有python编译器也可以在任意windows系统运行。我们把py脚本打包成EXE可执行程序。但因为打包了python编译器，导致一个简单的脚本也需要很多mb的空间占用。</p>
 <p>首先python安装nuitka模块。</p>
 <div class="highlight"><div class="chroma">
@@ -863,8 +862,8 @@ document.addEventListener('DOMContentLoaded', function() {
 </span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
-<h4 id="nuitka是什么">Nuitka是什么？
-</h4><p>nuitka是一个用来将python代码打包为exe可执行文件，方便其在没有相关环境的windows系统上运行的工具。其原理为：将python代码（自己写的部分）转换成C代码，以提高运行的速度。</p></blockquote>
+<p><strong>Nuitka是什么？</strong></p>
+<p>nuitka是一个用来将python代码打包为exe可执行文件，方便其在没有相关环境的windows系统上运行的工具。其原理为：将python代码（自己写的部分）转换成C代码，以提高运行的速度。</p></blockquote>
 <p>打包login_network.py为exe</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -955,7 +954,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
         <span>
-            最后更新于 2025-05-15 21:33 CST
+            最后更新于 2025-05-15 21:45 CST
         </span>
     </section></footer>
 
