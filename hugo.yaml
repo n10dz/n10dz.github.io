@@ -242,16 +242,6 @@ params:
     assets:                         # 资源文件配置
         fingerprint: true            # 是否启用指纹
 
-    # 站点统计配置
-    analytics:
-        umami:
-            enabled: true           # 启用 Umami 统计
-            scriptUrl: "https://cloud.umami.is/script.js"  # Umami 脚本地址
-            websiteId: "6d9a1db9-c802-4eba-afd2-b823eda08986"  # 网站 ID
-            dataAutoTrack: true     # 自动跟踪
-            dataDoNotTrack: true    # 尊重 Do Not Track
-            dataCache: true         # 启用缓存
-
 # 自定义菜单配置
 menu:
     main:                           # 主导航菜单
