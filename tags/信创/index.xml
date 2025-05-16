@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>信创 on N10-Blog</title><link>https://n10dz.github.io/tags/%E4%BF%A1%E5%88%9B/</link><description>Recent content in 信创 on N10-Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>辽西聂德住</copyright><lastBuildDate>Mon, 05 May 2025 19:38:49 +0800</lastBuildDate><atom:link href="https://n10dz.github.io/tags/%E4%BF%A1%E5%88%9B/index.xml" rel="self" type="application/rss+xml"/><item><title>解决国产信创Linux系统DNS服务器被强制设置为`127.0.0.53`问题</title><link>https://n10dz.github.io/p/%E8%A7%A3%E5%86%B3%E5%9B%BD%E4%BA%A7%E4%BF%A1%E5%88%9Blinux%E7%B3%BB%E7%BB%9Fdns%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%A2%AB%E5%BC%BA%E5%88%B6%E8%AE%BE%E7%BD%AE%E4%B8%BA127.0.0.53%E9%97%AE%E9%A2%98/</link><pubDate>Thu, 20 Mar 2025 16:45:00 +0800</pubDate><guid>https://n10dz.github.io/p/%E8%A7%A3%E5%86%B3%E5%9B%BD%E4%BA%A7%E4%BF%A1%E5%88%9Blinux%E7%B3%BB%E7%BB%9Fdns%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%A2%AB%E5%BC%BA%E5%88%B6%E8%AE%BE%E7%BD%AE%E4%B8%BA127.0.0.53%E9%97%AE%E9%A2%98/</guid><description>&lt;p>本文针对麒麟、统信UOS、Ubuntu等Linux发行版中出现的&lt;code>/etc/resolv.conf&lt;/code>文件被强制重置为&lt;code>127.0.0.53&lt;/code>问题，提供两种解决方案。&lt;/p>
+&lt;h2 id="问题现象">问题现象
+&lt;/h2>&lt;ul>
+&lt;li>麒麟系统无法上网，打不开网页。&lt;/li>
+&lt;li>手动修改&lt;code>/etc/resolv.conf&lt;/code>后，重启系统或网络服务时配置被覆盖。&lt;/li>
+&lt;li>DNS服务器被强制设置为&lt;code>127.0.0.53&lt;/code>（systemd-resolved服务地址）。&lt;/li>
+&lt;/ul>
+&lt;h2 id="解决方案">解决方案
+&lt;/h2>&lt;h3 id="一临时修改dns重启后失效">一：临时修改DNS（重启后失效）
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 编辑DNS配置文件&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo vim /etc/resolv.conf
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 替换为以下内容（示例使用Google DNS）&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">nameserver 8.8.8.8
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">nameserver 8.8.4.4
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="二永久解决方案推荐">二：永久解决方案（推荐）
+&lt;/h3>&lt;h4 id="步骤1停用systemd-resolved服务">步骤1：停用systemd-resolved服务
+&lt;/h4>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo systemctl stop systemd-resolved
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo systemctl disable systemd-resolved
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="步骤2安装unbound解析器">步骤2：安装unbound解析器
+&lt;/h4>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo apt update &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> sudo apt install unbound -y
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="步骤3配置networkmanager">步骤3：配置NetworkManager
+&lt;/h4>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo vim /etc/NetworkManager/NetworkManager.conf
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#在 [main] 段落添加配置：&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ini
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">dns&lt;/span>&lt;span class="o">=&lt;/span>unbound
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="步骤4应用配置">步骤4：应用配置
+&lt;/h4>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo systemctl restart NetworkManager
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="验证结果">验证结果
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">cat /etc/resolv.conf &lt;span class="c1"># 应显示实际配置的DNS服务器&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ping baidu.com &lt;span class="c1"># 测试网络连通性&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="技术原理">📌技术原理
+&lt;/h3>&lt;p>systemd-resolved 是新一代DNS解析服务，会强制接管DNS配置。本方案通过：&lt;/p>
+&lt;ol>
+&lt;li>用unbound替代默认解析器&lt;/li>
+&lt;li>修改NetworkManager的DNS管理策略&lt;/li>
+&lt;li>建立稳定的DNS配置托管机制&lt;/li>
+&lt;/ol>
+&lt;h3 id="故障排查">故障排查
+&lt;/h3>&lt;h4 id="如遇网络异常可通过以下命令恢复">如遇网络异常，可通过以下命令恢复：
+&lt;/h4>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">sudo systemctl &lt;span class="nb">enable&lt;/span> systemd-resolved --now
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo rm /etc/NetworkManager/conf.d/dns.conf
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;blockquote>
+&lt;p>本文适用于以下国产信创系统：
+麒麟Kylin V10
+统信UOS 20
+Ubuntu 18.04+/Debian 10+&lt;/p>&lt;/blockquote></description></item></channel></rss>

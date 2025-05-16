@@ -1,0 +1,321 @@
+<!doctype html><html lang=zh-cn dir=ltr><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><meta name=description content="基于python在Windows上实现深信服Web联网认证开机自动登录互联网认证"><title>基于python实现深信服Web联网认证自动登录/py脚本</title>
+<link rel=canonical href=https://n10dz.github.io/p/%E5%9F%BA%E4%BA%8Epython%E5%AE%9E%E7%8E%B0%E6%B7%B1%E4%BF%A1%E6%9C%8Dweb%E8%81%94%E7%BD%91%E8%AE%A4%E8%AF%81%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95/py%E8%84%9A%E6%9C%AC/><link rel=stylesheet href=/scss/style.min.6124393e843199bcbb4a38ea0caab1a267cf32db38e75610254313976b31d35f.css><meta property='og:title' content="基于python实现深信服Web联网认证自动登录/py脚本"><meta property='og:description' content="基于python在Windows上实现深信服Web联网认证开机自动登录互联网认证"><meta property='og:url' content='https://n10dz.github.io/p/%E5%9F%BA%E4%BA%8Epython%E5%AE%9E%E7%8E%B0%E6%B7%B1%E4%BF%A1%E6%9C%8Dweb%E8%81%94%E7%BD%91%E8%AE%A4%E8%AF%81%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95/py%E8%84%9A%E6%9C%AC/'><meta property='og:site_name' content='N10-Blog'><meta property='og:type' content='article'><meta property='article:section' content='Post'><meta property='article:tag' content='Windows'><meta property='article:tag' content='python'><meta property='article:tag' content='脚本'><meta property='article:tag' content='自动化'><meta property='article:published_time' content='2025-05-15T19:51:08+08:00'><meta property='article:modified_time' content='2025-05-15T21:57:50+08:00'><meta name=twitter:site content="@n10_666"><meta name=twitter:creator content="@n10_666"><meta name=twitter:title content="基于python实现深信服Web联网认证自动登录/py脚本"><meta name=twitter:description content="基于python在Windows上实现深信服Web联网认证开机自动登录互联网认证"><link rel="shortcut icon" href=/favicon.ico><style>.wechat-modal{display:none;position:fixed;z-index:999999;left:0;top:0;width:100%;height:100%;background-color:rgba(0,0,0,.7);overflow:auto}.modal-content{background-color:#fefefe;margin:10% auto;padding:20px;border:1px solid #888;width:300px;border-radius:5px;position:relative;box-shadow:0 4px 6px rgba(0,0,0,.1)}.close-btn{color:#aaa;float:right;font-size:28px;font-weight:700;cursor:pointer;position:absolute;right:10px;top:5px}.close-btn:hover{color:#000}.qr-image{width:100%;height:auto;display:block;margin-top:10px}</style><div class=wechat-modal id=wechatModal><div class=modal-content><span class=close-btn onclick=closeWechatQR()>&#215;</span>
+<img src=/wechat.png alt="WeChat QR Code" class=qr-image></div></div><script>document.addEventListener("DOMContentLoaded",function(){document.querySelectorAll(".wechat-link").forEach(function(e){e.addEventListener("click",function(e){e.preventDefault(),showWechatQR()})}),window.showWechatQR=function(){console.log("Showing QR code");var e=document.getElementById("wechatModal");e?(e.style.display="block",document.body.style.overflow="hidden"):console.error("Modal element not found")},window.closeWechatQR=function(){console.log("Closing QR code");var e=document.getElementById("wechatModal");e&&(e.style.display="none",document.body.style.overflow="")},window.onclick=function(e){var t=document.getElementById("wechatModal");e.target==t&&(t.style.display="none",document.body.style.overflow="")}})</script><script defer src=https://cloud.umami.is/script.js data-website-id=6d9a1db9-c802-4eba-afd2-b823eda08986></script></head></body><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label=切换菜单>
+<span class=hamburger-box><span class=hamburger-inner></span></span></button><header><figure class=site-avatar><a href=/><img src=/img/avatar_hu_c8ef893d87d607a1.png width=300 height=300 class=site-logo loading=lazy alt=Avatar>
+</a><span class=emoji>🍟</span></figure><div class=site-meta><h1 class=site-name><a href=/>N10-Blog</a></h1><h2 class=site-description>Let's get some fries at the dock</h2></div></header><ol class=menu-social><li><a href=mailto:dp7100@126.com target=_blank title=Email rel=me><!doctype html><svg t="1745844791095" class="icon" viewBox="0 0 1024 1024" p-id="9850" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200"><path d="M836.2496 156.672H186.9824c-62.208.0-112.64 50.432-112.64 112.64v8.8064l368.4352 211.4048a138.26048 138.26048.0 00137.6768.0l368.4352-211.4048V269.312c0-62.208-50.432-112.64-112.64-112.64z" fill="#facc31" p-id="9851"/><path d="M973.824 256.1024c-6.656-70.0416-65.8432-125.0816-137.5744-125.0816H186.9824c-71.7824.0-130.9184 54.9888-137.5744 125.0816-.4096 1.792-.6656 3.6352-.6656 5.5808v481.28c0 88.2176 62.0032 160 138.24 160h649.2672c76.2368.0 138.24-71.7824 138.24-160v-481.28c0-1.8944-.256-3.7376-.6656-5.5808zM186.9824 182.272h649.2672c46.0288.0 83.8144 35.8912 86.8352 81.152L559.2576 472.1664a96.14336 96.14336.0 01-95.2832.0L100.1472 263.424c3.0208-45.2608 40.8064-81.152 86.8352-81.152zm649.2672 669.5424H186.9824c-47.9744.0-87.04-48.7936-87.04-108.8V322.3552L438.4768 516.608c22.528 12.9536 47.8208 19.4048 73.1136 19.4048s50.5856-6.4512 73.1136-19.4048l338.5344-194.2528v420.608c.0512 60.0064-39.0144 108.8512-86.9888 108.8512z" fill="#191919" p-id="9852"/></svg></a></li><li><a href=https://github.com/n10dz target=_blank title=GitHub rel=me><!doctype html><svg t="1745844482306" class="icon" viewBox="0 0 1024 1024" p-id="6913" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200"><path d="M512 512M0 512a512 512 0 101024 0A512 512 0 100 512z" fill="#4186f5" p-id="6914"/><path d="M611.944 302.056c0-15.701 2.75-30.802 7.816-44.917a384.238 384.238.0 00-186.11 2.956c-74.501-50.063-93.407-71.902-107.975-39.618a136.243 136.243.0 00-3.961 102.287A149.515 149.515.0 00281.765 427.57c0 148.743 92.139 181.875 179.961 191.61a83.898 83.898.0 00-25.192 51.863c-40.708 22.518-91.94 8.261-115.181-32.058a83.117 83.117.0 00-60.466-39.98s-38.871-.361-2.879 23.408a102.97 102.97.0 0143.912 56.906s23.398 75.279 133.531 51.863v65.913c0 10.443 13.548 42.63 102.328 42.63 71.275.0 94.913-30.385 94.913-42.987V690.485a90.052 90.052.0 00-26.996-72.03c83.996-9.381 173.328-40.204 179.6-176.098a164.706 164.706.0 01-21.129 1.365c-84.07.0-152.223-63.426-152.223-141.666z" fill="#fff" p-id="6915"/><path d="M743.554 322.765a136.267 136.267.0 00-3.961-102.289s-32.396-10.445-107.979 39.618a385.536 385.536.0 00-11.853-2.956 132.623 132.623.0 00-7.816 44.917c0 78.24 68.152 141.667 152.222 141.667 7.171.0 14.222-.472 21.129-1.365.231-5.03.363-10.187.363-15.509a149.534 149.534.0 00-42.105-104.083z" fill="#fff" opacity=".4" p-id="6916"/></svg></a></li><li><a href=https://twitter.com/n10_666 target=_blank title=Twitter rel=me><!doctype html><svg t="1745746773594" class="icon" viewBox="0 0 1024 1024" p-id="4772" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200"><path d="M761.759375 122H894.08L605 452.4003125 945.08 902H678.8L470.24 629.3196875 231.599375 902H99.2l309.1996875-353.4L82.16 122h273.0403125l188.52 249.24zm-46.4390625 700.8h73.32L315.359375 197.0403125H236.67875z" fill="#2c2c2c" p-id="4773"/></svg></a></li><li><a href=javascript:void(0) class=wechat-link title=WeChat rel=me><!doctype html><svg t="1745842795410" class="icon" viewBox="0 0 1024 1024" p-id="2665" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200"><path d="M1024 619.52c0-143.36-138.24-256-307.2-256s-307.2 112.64-307.2 256 138.24 256 307.2 256c30.72.0 61.44-5.12 92.16-10.24l97.28 51.2-25.6-76.8c87.04-51.2 143.36-128 143.36-220.16zm-414.72-40.96c-30.72.0-51.2-20.48-51.2-51.2s20.48-51.2 51.2-51.2 51.2 20.48 51.2 51.2c0 25.6-25.6 51.2-51.2 51.2zm209.92.0c-30.72.0-51.2-20.48-51.2-51.2s20.48-51.2 51.2-51.2 51.2 20.48 51.2 51.2c0 25.6-25.6 51.2-51.2 51.2z" fill="#4cbf00" p-id="2666"/><path d="M358.4 609.28c0-158.72 153.6-286.72 348.16-286.72h15.36c-40.96-133.12-179.2-235.52-353.28-235.52-204.8.0-368.64 138.24-368.64 307.2.0 107.52 66.56 204.8 168.96 256l-30.72 92.16L256 686.08c35.84 10.24 71.68 15.36 112.64 15.36h10.24c-15.36-30.72-20.48-61.44-20.48-92.16zm138.24-414.72c35.84.0 66.56 30.72 66.56 66.56s-30.72 66.56-66.56 66.56C460.8 322.56 430.08 291.84 430.08 256s30.72-61.44 66.56-61.44zm-250.88 128c-35.84.0-61.44-30.72-61.44-66.56s30.72-66.56 66.56-66.56 61.44 30.72 61.44 66.56-30.72 66.56-66.56 66.56z" fill="#4cbf00" p-id="2667"/></svg></a></li></ol><ol class=menu id=main-menu><li><a href=/><svg class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg>
+<span>主页</span></a></li><li><a href=/archives/ target=_blank><svg class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+<span>文章</span></a></li><li><a href=/search/><svg class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15" y2="15"/></svg>
+<span>搜索</span></a></li><li><a href=/about/ target=_blank><svg class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg>
+<span>关于</span></a></li><li class=menu-bottom-section><ol class=menu><li id=dark-mode-toggle><svg class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<svg class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<span>暗色模式</span></li></ol></li></ol></aside><aside class="sidebar right-sidebar sticky"><section class="widget archives"><div class=widget-icon><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg></div><h2 class="widget-title section-title">目录</h2><div class=widget--toc><nav id=TableOfContents><ol><li><a href=#前言>前言</a></li><li><a href=#web登录页面分析>Web登录页面分析</a></li><li><a href=#pycharm启动写脚本>PyCharm启动（写脚本）</a></li><li><a href=#让脚本开机自动运行>让脚本开机自动运行</a><ol><li><a href=#windows系统>Windows系统</a><ol><li><a href=#py文件直接部署>py文件直接部署</a></li><li><a href=#exe部署>EXE部署</a></li></ol></li></ol></li></ol></nav></div></section></aside><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><header class=article-category><a href=/categories/%E5%85%B3%E4%BA%8E%E8%BF%90%E7%BB%B4/>关于运维</a></header><div class=article-title-wrapper><h2 class=article-title><a href=/p/%E5%9F%BA%E4%BA%8Epython%E5%AE%9E%E7%8E%B0%E6%B7%B1%E4%BF%A1%E6%9C%8Dweb%E8%81%94%E7%BD%91%E8%AE%A4%E8%AF%81%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95/py%E8%84%9A%E6%9C%AC/>基于python实现深信服Web联网认证自动登录/py脚本</a></h2><h3 class=article-subtitle>基于python在Windows上实现深信服Web联网认证开机自动登录互联网认证</h3></div><footer class=article-time><div><svg class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
+<time class=article-time--published>2025-05-15</time></div></footer></div></header><section class=article-content><h2 id=前言>前言</h2><p><code>公司使用互联网每天最头疼的事莫过于联网还得登录。作为一个懒人，如此的重复劳动属实是不能接受的。为了解决这个问题，想着部署单点登录无奈推进坎坷。没办法先搞个web联网认证自动脚本吧。</code></p><h2 id=web登录页面分析>Web登录页面分析</h2><p>第一步就是得弄明白报文的地址和格式，然后只需要让代码替代请求即可完成。使用Chrome浏览器打开认证登陆界面按下<kbd>F12</kbd>打开网络解析器，勾选<kbd>Preverse log</kbd>选项。输入账号密码登录，对登录请求进行分析。可以看到，我们按下登录按钮后，网络请求资源中有一个<strong>login</strong>登录请求。我们点击它，详细信息在右边显示，包括请求头、返回头、payload、cookies等信息。我们最关注的是payload里提交的信息，这里记录我们的账号密码等信息，点击查看一下：</p><p><img src=/p/%E5%9F%BA%E4%BA%8Epython%E5%AE%9E%E7%8E%B0%E6%B7%B1%E4%BF%A1%E6%9C%8Dweb%E8%81%94%E7%BD%91%E8%AE%A4%E8%AF%81%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95/py%E8%84%9A%E6%9C%AC/zddl01.png width=1028 height=657 srcset="/p/%E5%9F%BA%E4%BA%8Epython%E5%AE%9E%E7%8E%B0%E6%B7%B1%E4%BF%A1%E6%9C%8Dweb%E8%81%94%E7%BD%91%E8%AE%A4%E8%AF%81%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95/py%E8%84%9A%E6%9C%AC/zddl01_hu_63f62883abd53dc2.png 480w, /p/%E5%9F%BA%E4%BA%8Epython%E5%AE%9E%E7%8E%B0%E6%B7%B1%E4%BF%A1%E6%9C%8Dweb%E8%81%94%E7%BD%91%E8%AE%A4%E8%AF%81%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95/py%E8%84%9A%E6%9C%AC/zddl01_hu_b1f84cc35ad7f6df.png 1024w" loading=lazy alt=payload信息 class=gallery-image data-flex-grow=156 data-flex-basis=375px></p><p>这里payload的表单信息包括页面版本、登陆账号、登录密码、语言等信息。但，这个password这么一长串，也不是我输入的密码啊？这是森马加密方法呢？有点难搞。我来尝试重新登录下。哎，密文没有变。好好好分析下从登陆界面开始到登陆成功为止，很明显是从<strong>login</strong>先开始的，这里的密码已经加密了。在这之前我也没输入过密码。所以，”心机之蛙，一直摸你肚子“，密码是在前端直接加密了！是在我按下登陆的同时前端实时加密然后再上传的。</p><p>这不So easy， JS代码里肯定有加密代码。</p><p>妈蛋，还分析个6啊请求资源列表里这不摆着<strong>crypt.js</strong>加密嘛。我这眼镜白带了。那么好我们来打开看下：
+<img src=/p/%E5%9F%BA%E4%BA%8Epython%E5%AE%9E%E7%8E%B0%E6%B7%B1%E4%BF%A1%E6%9C%8Dweb%E8%81%94%E7%BD%91%E8%AE%A4%E8%AF%81%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95/py%E8%84%9A%E6%9C%AC/zddl02.png width=1029 height=661 srcset="/p/%E5%9F%BA%E4%BA%8Epython%E5%AE%9E%E7%8E%B0%E6%B7%B1%E4%BF%A1%E6%9C%8Dweb%E8%81%94%E7%BD%91%E8%AE%A4%E8%AF%81%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95/py%E8%84%9A%E6%9C%AC/zddl02_hu_acf579e7c3cb45a5.png 480w, /p/%E5%9F%BA%E4%BA%8Epython%E5%AE%9E%E7%8E%B0%E6%B7%B1%E4%BF%A1%E6%9C%8Dweb%E8%81%94%E7%BD%91%E8%AE%A4%E8%AF%81%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95/py%E8%84%9A%E6%9C%AC/zddl02_hu_3cbef69ab4d3682c.png 1024w" loading=lazy alt=crypt.js信息 class=gallery-image data-flex-grow=155 data-flex-basis=373px></p><p>是个Md6？哈希密码？不管了有了方法就好办了。</p><h2 id=pycharm启动写脚本>PyCharm启动（写脚本）</h2><p>二半吊子写py，过程极其坎坷直接上完整代码：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>  1
+</span><span class=lnt>  2
+</span><span class=lnt>  3
+</span><span class=lnt>  4
+</span><span class=lnt>  5
+</span><span class=lnt>  6
+</span><span class=lnt>  7
+</span><span class=lnt>  8
+</span><span class=lnt>  9
+</span><span class=lnt> 10
+</span><span class=lnt> 11
+</span><span class=lnt> 12
+</span><span class=lnt> 13
+</span><span class=lnt> 14
+</span><span class=lnt> 15
+</span><span class=lnt> 16
+</span><span class=lnt> 17
+</span><span class=lnt> 18
+</span><span class=lnt> 19
+</span><span class=lnt> 20
+</span><span class=lnt> 21
+</span><span class=lnt> 22
+</span><span class=lnt> 23
+</span><span class=lnt> 24
+</span><span class=lnt> 25
+</span><span class=lnt> 26
+</span><span class=lnt> 27
+</span><span class=lnt> 28
+</span><span class=lnt> 29
+</span><span class=lnt> 30
+</span><span class=lnt> 31
+</span><span class=lnt> 32
+</span><span class=lnt> 33
+</span><span class=lnt> 34
+</span><span class=lnt> 35
+</span><span class=lnt> 36
+</span><span class=lnt> 37
+</span><span class=lnt> 38
+</span><span class=lnt> 39
+</span><span class=lnt> 40
+</span><span class=lnt> 41
+</span><span class=lnt> 42
+</span><span class=lnt> 43
+</span><span class=lnt> 44
+</span><span class=lnt> 45
+</span><span class=lnt> 46
+</span><span class=lnt> 47
+</span><span class=lnt> 48
+</span><span class=lnt> 49
+</span><span class=lnt> 50
+</span><span class=lnt> 51
+</span><span class=lnt> 52
+</span><span class=lnt> 53
+</span><span class=lnt> 54
+</span><span class=lnt> 55
+</span><span class=lnt> 56
+</span><span class=lnt> 57
+</span><span class=lnt> 58
+</span><span class=lnt> 59
+</span><span class=lnt> 60
+</span><span class=lnt> 61
+</span><span class=lnt> 62
+</span><span class=lnt> 63
+</span><span class=lnt> 64
+</span><span class=lnt> 65
+</span><span class=lnt> 66
+</span><span class=lnt> 67
+</span><span class=lnt> 68
+</span><span class=lnt> 69
+</span><span class=lnt> 70
+</span><span class=lnt> 71
+</span><span class=lnt> 72
+</span><span class=lnt> 73
+</span><span class=lnt> 74
+</span><span class=lnt> 75
+</span><span class=lnt> 76
+</span><span class=lnt> 77
+</span><span class=lnt> 78
+</span><span class=lnt> 79
+</span><span class=lnt> 80
+</span><span class=lnt> 81
+</span><span class=lnt> 82
+</span><span class=lnt> 83
+</span><span class=lnt> 84
+</span><span class=lnt> 85
+</span><span class=lnt> 86
+</span><span class=lnt> 87
+</span><span class=lnt> 88
+</span><span class=lnt> 89
+</span><span class=lnt> 90
+</span><span class=lnt> 91
+</span><span class=lnt> 92
+</span><span class=lnt> 93
+</span><span class=lnt> 94
+</span><span class=lnt> 95
+</span><span class=lnt> 96
+</span><span class=lnt> 97
+</span><span class=lnt> 98
+</span><span class=lnt> 99
+</span><span class=lnt>100
+</span><span class=lnt>101
+</span><span class=lnt>102
+</span><span class=lnt>103
+</span><span class=lnt>104
+</span><span class=lnt>105
+</span><span class=lnt>106
+</span><span class=lnt>107
+</span><span class=lnt>108
+</span><span class=lnt>109
+</span><span class=lnt>110
+</span><span class=lnt>111
+</span><span class=lnt>112
+</span><span class=lnt>113
+</span><span class=lnt>114
+</span><span class=lnt>115
+</span><span class=lnt>116
+</span><span class=lnt>117
+</span><span class=lnt>118
+</span><span class=lnt>119
+</span><span class=lnt>120
+</span><span class=lnt>121
+</span><span class=lnt>122
+</span><span class=lnt>123
+</span><span class=lnt>124
+</span><span class=lnt>125
+</span><span class=lnt>126
+</span><span class=lnt>127
+</span><span class=lnt>128
+</span><span class=lnt>129
+</span><span class=lnt>130
+</span><span class=lnt>131
+</span><span class=lnt>132
+</span><span class=lnt>133
+</span><span class=lnt>134
+</span><span class=lnt>135
+</span><span class=lnt>136
+</span><span class=lnt>137
+</span><span class=lnt>138
+</span><span class=lnt>139
+</span><span class=lnt>140
+</span><span class=lnt>141
+</span><span class=lnt>142
+</span><span class=lnt>143
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=c1># -*- coding: utf-8 -*-</span>
+</span></span><span class=line><span class=cl><span class=c1># @Author  : N10</span>
+</span></span><span class=line><span class=cl><span class=c1># @Email   : dp7100@126.com</span>
+</span></span><span class=line><span class=cl><span class=c1># @Software: PyCharm</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=nn>msvcrt</span>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=nn>requests</span>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=nn>json</span>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=nn>os</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 使cmd能够正确输出颜色</span>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=n>os</span><span class=o>.</span><span class=n>name</span> <span class=o>==</span> <span class=s2>&#34;nt&#34;</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>os</span><span class=o>.</span><span class=n>system</span><span class=p>(</span><span class=s2>&#34;&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 切换工作目录到系统临时文件区域</span>
+</span></span><span class=line><span class=cl><span class=n>os</span><span class=o>.</span><span class=n>chdir</span><span class=p>(</span><span class=n>os</span><span class=o>.</span><span class=n>getenv</span><span class=p>(</span><span class=s1>&#39;TMP&#39;</span><span class=p>))</span>
+</span></span><span class=line><span class=cl><span class=c1># 文件名称</span>
+</span></span><span class=line><span class=cl><span class=n>file_name</span> <span class=o>=</span> <span class=s2>&#34;user_account.json&#34;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># md6加密函数 - 根据前端crypt.js实现</span>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>md6</span><span class=p>(</span><span class=n>s</span><span class=p>:</span> <span class=nb>str</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=nb>str</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;&#34;&#34;完全匹配前端crypt.js的md6函数实现&#34;&#34;&#34;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>mc</span><span class=p>(</span><span class=n>a</span><span class=p>:</span> <span class=nb>int</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=nb>str</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=n>a</span> <span class=o>=</span> <span class=n>a</span> <span class=o>&amp;</span> <span class=mh>0xFF</span>  <span class=c1># 确保a是无符号8位整数</span>
+</span></span><span class=line><span class=cl>        <span class=n>b</span> <span class=o>=</span> <span class=s2>&#34;0123456789ABCDEF&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=n>a</span> <span class=o>==</span> <span class=nb>ord</span><span class=p>(</span><span class=s1>&#39; &#39;</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>            <span class=k>return</span> <span class=s1>&#39;+&#39;</span>
+</span></span><span class=line><span class=cl>        <span class=k>elif</span> <span class=p>(</span><span class=n>a</span> <span class=o>&lt;</span> <span class=nb>ord</span><span class=p>(</span><span class=s1>&#39;0&#39;</span><span class=p>)</span> <span class=ow>and</span> <span class=n>a</span> <span class=o>!=</span> <span class=nb>ord</span><span class=p>(</span><span class=s1>&#39;-&#39;</span><span class=p>)</span> <span class=ow>and</span> <span class=n>a</span> <span class=o>!=</span> <span class=nb>ord</span><span class=p>(</span><span class=s1>&#39;.&#39;</span><span class=p>))</span> <span class=ow>or</span> \
+</span></span><span class=line><span class=cl>                <span class=p>(</span><span class=n>a</span> <span class=o>&lt;</span> <span class=nb>ord</span><span class=p>(</span><span class=s1>&#39;A&#39;</span><span class=p>)</span> <span class=ow>and</span> <span class=n>a</span> <span class=o>&gt;</span> <span class=nb>ord</span><span class=p>(</span><span class=s1>&#39;9&#39;</span><span class=p>))</span> <span class=ow>or</span> \
+</span></span><span class=line><span class=cl>                <span class=p>(</span><span class=n>a</span> <span class=o>&gt;</span> <span class=nb>ord</span><span class=p>(</span><span class=s1>&#39;Z&#39;</span><span class=p>)</span> <span class=ow>and</span> <span class=n>a</span> <span class=o>&lt;</span> <span class=nb>ord</span><span class=p>(</span><span class=s1>&#39;a&#39;</span><span class=p>)</span> <span class=ow>and</span> <span class=n>a</span> <span class=o>!=</span> <span class=nb>ord</span><span class=p>(</span><span class=s1>&#39;_&#39;</span><span class=p>))</span> <span class=ow>or</span> \
+</span></span><span class=line><span class=cl>                <span class=p>(</span><span class=n>a</span> <span class=o>&gt;</span> <span class=nb>ord</span><span class=p>(</span><span class=s1>&#39;z&#39;</span><span class=p>)):</span>
+</span></span><span class=line><span class=cl>            <span class=k>return</span> <span class=sa>f</span><span class=s2>&#34;%</span><span class=si>{</span><span class=n>b</span><span class=p>[(</span><span class=n>a</span> <span class=o>&gt;&gt;</span> <span class=mi>4</span><span class=p>)</span> <span class=o>&amp;</span> <span class=mh>0xF</span><span class=p>]</span><span class=si>}{</span><span class=n>b</span><span class=p>[</span><span class=n>a</span> <span class=o>&amp;</span> <span class=mh>0xF</span><span class=p>]</span><span class=si>}</span><span class=s2>&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=k>else</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=k>return</span> <span class=nb>chr</span><span class=p>(</span><span class=n>a</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>m</span><span class=p>(</span><span class=n>a</span><span class=p>:</span> <span class=nb>int</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=nb>int</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=p>(</span>
+</span></span><span class=line><span class=cl>                <span class=p>((</span><span class=n>a</span> <span class=o>&amp;</span> <span class=mi>1</span><span class=p>)</span> <span class=o>&lt;&lt;</span> <span class=mi>7</span><span class=p>)</span> <span class=o>|</span>
+</span></span><span class=line><span class=cl>                <span class=p>((</span><span class=n>a</span> <span class=o>&amp;</span> <span class=mh>0x2</span><span class=p>)</span> <span class=o>&lt;&lt;</span> <span class=mi>5</span><span class=p>)</span> <span class=o>|</span>
+</span></span><span class=line><span class=cl>                <span class=p>((</span><span class=n>a</span> <span class=o>&amp;</span> <span class=mh>0x4</span><span class=p>)</span> <span class=o>&lt;&lt;</span> <span class=mi>3</span><span class=p>)</span> <span class=o>|</span>
+</span></span><span class=line><span class=cl>                <span class=p>((</span><span class=n>a</span> <span class=o>&amp;</span> <span class=mh>0x8</span><span class=p>)</span> <span class=o>&lt;&lt;</span> <span class=mi>1</span><span class=p>)</span> <span class=o>|</span>
+</span></span><span class=line><span class=cl>                <span class=p>((</span><span class=n>a</span> <span class=o>&amp;</span> <span class=mh>0x10</span><span class=p>)</span> <span class=o>&gt;&gt;</span> <span class=mi>1</span><span class=p>)</span> <span class=o>|</span>
+</span></span><span class=line><span class=cl>                <span class=p>((</span><span class=n>a</span> <span class=o>&amp;</span> <span class=mh>0x20</span><span class=p>)</span> <span class=o>&gt;&gt;</span> <span class=mi>3</span><span class=p>)</span> <span class=o>|</span>
+</span></span><span class=line><span class=cl>                <span class=p>((</span><span class=n>a</span> <span class=o>&amp;</span> <span class=mh>0x40</span><span class=p>)</span> <span class=o>&gt;&gt;</span> <span class=mi>5</span><span class=p>)</span> <span class=o>|</span>
+</span></span><span class=line><span class=cl>                <span class=p>((</span><span class=n>a</span> <span class=o>&amp;</span> <span class=mh>0x80</span><span class=p>)</span> <span class=o>&gt;&gt;</span> <span class=mi>7</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=p>)</span> <span class=o>&amp;</span> <span class=mh>0xFF</span>  <span class=c1># 确保结果在0-255范围内</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>result</span> <span class=o>=</span> <span class=s2>&#34;&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=n>c</span> <span class=o>=</span> <span class=mh>0xbb</span>
+</span></span><span class=line><span class=cl>    <span class=k>for</span> <span class=n>i</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=nb>len</span><span class=p>(</span><span class=n>s</span><span class=p>)):</span>
+</span></span><span class=line><span class=cl>        <span class=n>a</span> <span class=o>=</span> <span class=nb>ord</span><span class=p>(</span><span class=n>s</span><span class=p>[</span><span class=n>i</span><span class=p>])</span>
+</span></span><span class=line><span class=cl>        <span class=n>ma</span> <span class=o>=</span> <span class=n>m</span><span class=p>(</span><span class=n>a</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=n>mask</span> <span class=o>=</span> <span class=n>i</span> <span class=o>&amp;</span> <span class=mh>0xff</span>
+</span></span><span class=line><span class=cl>        <span class=n>xor</span> <span class=o>=</span> <span class=mh>0x35</span> <span class=o>^</span> <span class=n>mask</span>
+</span></span><span class=line><span class=cl>        <span class=n>c</span> <span class=o>=</span> <span class=p>(</span><span class=n>ma</span> <span class=o>^</span> <span class=n>xor</span><span class=p>)</span> <span class=o>&amp;</span> <span class=mh>0xFF</span>  <span class=c1># 关键：确保c是无符号8位整数</span>
+</span></span><span class=line><span class=cl>        <span class=n>result</span> <span class=o>+=</span> <span class=n>mc</span><span class=p>(</span><span class=n>c</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=n>result</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 检查是否需要输入账号密码，如果不存在临时文件，根据输入新建临时文件保存账号密码。</span>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=ow>not</span> <span class=n>os</span><span class=o>.</span><span class=n>path</span><span class=o>.</span><span class=n>exists</span><span class=p>(</span><span class=n>file_name</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=c1># 输入账号密码</span>
+</span></span><span class=line><span class=cl>    <span class=n>account</span> <span class=o>=</span> <span class=nb>input</span><span class=p>(</span><span class=s2>&#34;请输入你的账号: &#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>password</span> <span class=o>=</span> <span class=nb>input</span><span class=p>(</span><span class=s2>&#34;请输入你的密码: &#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1># 对密码进行哈希处理</span>
+</span></span><span class=line><span class=cl>    <span class=n>hashed_password</span> <span class=o>=</span> <span class=n>md6</span><span class=p>(</span><span class=n>password</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1># 保存账号和哈希后的密码</span>
+</span></span><span class=line><span class=cl>    <span class=n>res</span> <span class=o>=</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=s1>&#39;account&#39;</span><span class=p>:</span> <span class=n>account</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=s1>&#39;password&#39;</span><span class=p>:</span> <span class=n>hashed_password</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=nb>print</span><span class=p>(</span><span class=s2>&#34;已安全保存账号信息&#34;</span><span class=p>,</span> <span class=n>res</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=c1># 写入json</span>
+</span></span><span class=line><span class=cl>    <span class=k>with</span> <span class=nb>open</span><span class=p>(</span><span class=n>file_name</span><span class=p>,</span> <span class=s2>&#34;w+&#34;</span><span class=p>)</span> <span class=k>as</span> <span class=n>fp</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=n>fp</span><span class=o>.</span><span class=n>write</span><span class=p>(</span><span class=n>json</span><span class=o>.</span><span class=n>dumps</span><span class=p>(</span><span class=n>res</span><span class=p>))</span>
+</span></span><span class=line><span class=cl><span class=c1># 如果存在，说明之前已经写入</span>
+</span></span><span class=line><span class=cl><span class=k>else</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=c1># 读取账号和哈希后的密码</span>
+</span></span><span class=line><span class=cl>    <span class=k>with</span> <span class=nb>open</span><span class=p>(</span><span class=n>file_name</span><span class=p>,</span> <span class=s2>&#34;r&#34;</span><span class=p>)</span> <span class=k>as</span> <span class=n>fp</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=n>res</span> <span class=o>=</span> <span class=n>json</span><span class=o>.</span><span class=n>loads</span><span class=p>(</span><span class=n>fp</span><span class=o>.</span><span class=n>read</span><span class=p>())</span>
+</span></span><span class=line><span class=cl>        <span class=n>account</span> <span class=o>=</span> <span class=n>res</span><span class=p>[</span><span class=s1>&#39;account&#39;</span><span class=p>]</span>
+</span></span><span class=line><span class=cl>        <span class=n>hashed_password</span> <span class=o>=</span> <span class=n>res</span><span class=p>[</span><span class=s1>&#39;password&#39;</span><span class=p>]</span>  <span class=c1># 明确这是哈希后的密码</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;已读取保存的账号: </span><span class=si>{</span><span class=n>account</span><span class=si>}</span><span class=s2>&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 请求网址</span>
+</span></span><span class=line><span class=cl><span class=n>url</span> <span class=o>=</span> <span class=s2>&#34;http://10.1.1.10/login&#34;</span> <span class=c1>#认证页面地址。</span>
+</span></span><span class=line><span class=cl><span class=c1># 请求头</span>
+</span></span><span class=line><span class=cl><span class=n>headers</span> <span class=o>=</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;X-Requested-With&#34;</span><span class=p>:</span> <span class=s2>&#34;XMLHttpRequest&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;User-Agent&#34;</span><span class=p>:</span> <span class=s2>&#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;Content-Type&#34;</span><span class=p>:</span> <span class=s2>&#34;application/x-www-form-urlencoded; charset=UTF-8&#34;</span><span class=p>,</span> <span class=c1># 必须指定，否则报404</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=s2>&#34;</span><span class=se>\n</span><span class=s2>正在尝试互联网登录认证...&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>while</span> <span class=kc>True</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=k>try</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=c1># 直接使用从文件中读取的哈希值</span>
+</span></span><span class=line><span class=cl>        <span class=n>encrypted_pwd</span> <span class=o>=</span> <span class=n>hashed_password</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=c1># 打印发送的加密密码（调试用）</span>
+</span></span><span class=line><span class=cl>        <span class=c1># print(f&#34;发送的加密密码: {encrypted_pwd}&#34;)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=c1># 构建登录请求参数</span>
+</span></span><span class=line><span class=cl>        <span class=n>payload</span> <span class=o>=</span> <span class=sa>f</span><span class=s2>&#34;page_version=10.0&amp;username=</span><span class=si>{</span><span class=n>account</span><span class=si>}</span><span class=s2>&amp;password=</span><span class=si>{</span><span class=n>encrypted_pwd</span><span class=si>}</span><span class=s2>&amp;login_type=login&amp;page_language=zh&amp;terminal=pc&amp;uri=换成你的uri地址&#34;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=c1># 发送登录请求</span>
+</span></span><span class=line><span class=cl>        <span class=n>res</span> <span class=o>=</span> <span class=n>requests</span><span class=o>.</span><span class=n>post</span><span class=p>(</span><span class=n>url</span><span class=p>,</span> <span class=n>data</span><span class=o>=</span><span class=n>payload</span><span class=p>,</span> <span class=n>headers</span><span class=o>=</span><span class=n>headers</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=c1># 打印响应内容（调试用）</span>
+</span></span><span class=line><span class=cl>        <span class=c1># print(f&#34;响应状态码: {res.status_code}&#34;)</span>
+</span></span><span class=line><span class=cl>        <span class=c1># print(f&#34;响应内容: {res.text}\n&#34;)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=c1># 判断登录是否成功</span>
+</span></span><span class=line><span class=cl>        <span class=n>failed_keywords</span> <span class=o>=</span> <span class=p>[</span><span class=s2>&#34;登录失败&#34;</span><span class=p>,</span> <span class=s2>&#34;error&#34;</span><span class=p>,</span> <span class=s2>&#34;账号或密码错误&#34;</span><span class=p>,</span> <span class=s2>&#34;认证失败&#34;</span><span class=p>,</span> <span class=s2>&#34;账号或者密码错误&#34;</span><span class=p>]</span>
+</span></span><span class=line><span class=cl>        <span class=n>success_keywords</span> <span class=o>=</span> <span class=p>[</span><span class=s2>&#34;success&#34;</span><span class=p>,</span> <span class=s2>&#34;欢迎&#34;</span><span class=p>,</span> <span class=s2>&#34;认证成功&#34;</span><span class=p>,</span> <span class=s2>&#34;登录成功&#34;</span><span class=p>]</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=n>has_failed</span> <span class=o>=</span> <span class=nb>any</span><span class=p>(</span><span class=n>keyword</span> <span class=ow>in</span> <span class=n>res</span><span class=o>.</span><span class=n>text</span> <span class=k>for</span> <span class=n>keyword</span> <span class=ow>in</span> <span class=n>failed_keywords</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=n>has_success</span> <span class=o>=</span> <span class=nb>any</span><span class=p>(</span><span class=n>keyword</span> <span class=ow>in</span> <span class=n>res</span><span class=o>.</span><span class=n>text</span> <span class=k>for</span> <span class=n>keyword</span> <span class=ow>in</span> <span class=n>success_keywords</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=n>is_success</span> <span class=o>=</span> <span class=n>res</span><span class=o>.</span><span class=n>status_code</span> <span class=o>==</span> <span class=mi>200</span> <span class=ow>and</span> <span class=p>(</span><span class=n>has_success</span> <span class=ow>or</span> <span class=s2>&#34;location.href&#34;</span> <span class=ow>in</span> <span class=n>res</span><span class=o>.</span><span class=n>text</span><span class=p>)</span> <span class=ow>and</span> <span class=ow>not</span> <span class=n>has_failed</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=n>is_success</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;</span><span class=se>\033</span><span class=s2>[7;32;47m登录成功! </span><span class=se>\033</span><span class=s2>[0m&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=k>else</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;</span><span class=se>\033</span><span class=s2>[7;31;47m登录失败! </span><span class=si>{</span><span class=n>res</span><span class=o>.</span><span class=n>content</span><span class=o>.</span><span class=n>decode</span><span class=p>(</span><span class=s1>&#39;utf-8&#39;</span><span class=p>)</span><span class=si>}</span><span class=s2> </span><span class=se>\033</span><span class=s2>[0m&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>            <span class=nb>print</span><span class=p>(</span><span class=s2>&#34;</span><span class=se>\033</span><span class=s2>[7;31;47m&#34;</span><span class=p>,</span> <span class=s2>&#34;请检查账号密码是否正确!&#34;</span><span class=p>,</span> <span class=s2>&#34;</span><span class=se>\033</span><span class=s2>[0m&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>            <span class=n>os</span><span class=o>.</span><span class=n>remove</span><span class=p>(</span><span class=n>file_name</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>            <span class=nb>print</span><span class=p>(</span><span class=s2>&#34;</span><span class=se>\033</span><span class=s2>[7;36;47m&#34;</span><span class=p>,</span> <span class=s2>&#34;已清除保存的账号信息。</span><span class=se>\n</span><span class=s2>请重新启动程序并输入正确的账号密码。&#34;</span><span class=p>,</span> <span class=s2>&#34;</span><span class=se>\033</span><span class=s2>[0m&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=s2>&#34;按任意键退出...&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=nb>ord</span><span class=p>(</span><span class=n>msvcrt</span><span class=o>.</span><span class=n>getch</span><span class=p>()):</span>
+</span></span><span class=line><span class=cl>            <span class=k>break</span>
+</span></span><span class=line><span class=cl>    <span class=k>except</span> <span class=ne>Exception</span> <span class=k>as</span> <span class=n>err</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=s2>&#34;</span><span class=se>\033</span><span class=s2>[7;31;47m&#34;</span><span class=p>,</span> <span class=s2>&#34;登录错误！</span><span class=se>\t</span><span class=s2>可能需要先连接WiFi？&#34;</span><span class=p>,</span> <span class=s2>&#34;</span><span class=se>\033</span><span class=s2>[0m&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=s2>&#34;</span><span class=se>\033</span><span class=s2>[7;33;40m&#34;</span><span class=p>,</span> <span class=sa>f</span><span class=s2>&#34;错误详情: </span><span class=si>{</span><span class=n>err</span><span class=si>}</span><span class=s2>&#34;</span><span class=p>,</span> <span class=s2>&#34;</span><span class=se>\033</span><span class=s2>[0m&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=s2>&#34;按 &#39;R&#39; 键重新尝试，或按任意键退出...&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=nb>ord</span><span class=p>(</span><span class=n>msvcrt</span><span class=o>.</span><span class=n>getch</span><span class=p>())</span> <span class=o>!=</span> <span class=mi>114</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=k>break</span>
+</span></span></code></pre></td></tr></table></div></div><blockquote><p>脚本避免明文存储密码采用先哈希加密后保存到json的方式进行登录认证。</p></blockquote><p>在第一执行脚本时会在win临时目录下创建<strong>user_account.json</strong>文件来存储用户的用户名和加密后的密码信息。如果通过认证第二次执行脚本时会直接调取存储的信息。否则会删除json文件重新输入信息。运行结果如图：</p><p><img src=/p/%E5%9F%BA%E4%BA%8Epython%E5%AE%9E%E7%8E%B0%E6%B7%B1%E4%BF%A1%E6%9C%8Dweb%E8%81%94%E7%BD%91%E8%AE%A4%E8%AF%81%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95/py%E8%84%9A%E6%9C%AC/zddl04.png width=1424 height=618 srcset="/p/%E5%9F%BA%E4%BA%8Epython%E5%AE%9E%E7%8E%B0%E6%B7%B1%E4%BF%A1%E6%9C%8Dweb%E8%81%94%E7%BD%91%E8%AE%A4%E8%AF%81%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95/py%E8%84%9A%E6%9C%AC/zddl04_hu_33c38e1ebe206eef.png 480w, /p/%E5%9F%BA%E4%BA%8Epython%E5%AE%9E%E7%8E%B0%E6%B7%B1%E4%BF%A1%E6%9C%8Dweb%E8%81%94%E7%BD%91%E8%AE%A4%E8%AF%81%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95/py%E8%84%9A%E6%9C%AC/zddl04_hu_f7a502c25b000adb.png 1024w" loading=lazy alt=运行结果 class=gallery-image data-flex-grow=230 data-flex-basis=553px></p><h2 id=让脚本开机自动运行>让脚本开机自动运行</h2><h3 id=windows系统>Windows系统</h3><p>在windows下有一个自启动文件夹：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>C:\Users\你的用户名称\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
+</span></span></code></pre></td></tr></table></div></div><p>这个文件夹里放置的所有windows可识别文件都会在开机时自动执行。下面我们就使用这个文件夹进行部署。</p><h4 id=py文件直接部署>py文件直接部署</h4><p>这是最简单的部署方法，前提电脑有python编译器支持。用bat批处理调用python编译器执行脚本：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>start python /“文件目录”/login_network.py
+</span></span></code></pre></td></tr></table></div></div><p>然后把bat文件放在前面说的<strong>Startup</strong>文件夹下即可。</p><h4 id=exe部署>EXE部署</h4><p>为了让没有python编译器也可以在任意windows系统运行。我们把py脚本打包成EXE可执行程序。但因为打包了python编译器，导致一个简单的脚本也需要很多mb的空间占用。</p><p>首先python安装nuitka模块。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>pip install -U nuitka
+</span></span></code></pre></td></tr></table></div></div><blockquote><p><strong>Nuitka是什么？</strong></p><p>nuitka是一个用来将python代码打包为exe可执行文件，方便其在没有相关环境的windows系统上运行的工具。其原理为：将python代码（自己写的部分）转换成C代码，以提高运行的速度。</p></blockquote><p>打包login_network.py为exe</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-gdscript3 data-lang=gdscript3><span class=line><span class=cl><span class=n>nuitka</span> <span class=o>--</span><span class=n>onefile</span> <span class=o>--</span><span class=n>include</span><span class=o>-</span><span class=n>package</span><span class=o>=</span><span class=n>requests</span> <span class=o>--</span><span class=n>remove</span><span class=o>-</span><span class=n>output</span> <span class=o>--</span><span class=n>assume</span><span class=o>-</span><span class=n>yes</span><span class=o>-</span><span class=k>for</span><span class=o>-</span><span class=n>downloads</span> <span class=o>--</span><span class=n>output</span><span class=o>-</span><span class=n>filename</span><span class=o>=</span><span class=err>互联网自动认证登录</span><span class=o>.</span><span class=n>exe</span> <span class=n>login_network</span><span class=o>.</span><span class=n>py</span>
+</span></span></code></pre></td></tr></table></div></div><blockquote><p>参数说明：
+&ndash;onefile 打包为单个exe文件</p><p>&ndash;include-package=requests 指定 requests 插件，确保 requests 库被正确打包</p><p>&ndash;remove-output 移除临时文件，减小最终文件大小</p><p>&ndash;assume-yes-for-downloads 自动下载缺少的依赖</p><p>&ndash;output-filename=互联网自动认证登录.exe 打包完成后，会在当前目录生成<code>互联网自动认证登录.exe</code>文件</p></blockquote><p>可以看到我们用nuitka输出的exe文件。文件大小还是有点大的，本来5kb的代码打了个包变成了7.6Mb。</p><p><img src=/p/%E5%9F%BA%E4%BA%8Epython%E5%AE%9E%E7%8E%B0%E6%B7%B1%E4%BF%A1%E6%9C%8Dweb%E8%81%94%E7%BD%91%E8%AE%A4%E8%AF%81%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95/py%E8%84%9A%E6%9C%AC/zddl03.png width=626 height=68 srcset="/p/%E5%9F%BA%E4%BA%8Epython%E5%AE%9E%E7%8E%B0%E6%B7%B1%E4%BF%A1%E6%9C%8Dweb%E8%81%94%E7%BD%91%E8%AE%A4%E8%AF%81%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95/py%E8%84%9A%E6%9C%AC/zddl03_hu_50a6bfadd7ea825e.png 480w, /p/%E5%9F%BA%E4%BA%8Epython%E5%AE%9E%E7%8E%B0%E6%B7%B1%E4%BF%A1%E6%9C%8Dweb%E8%81%94%E7%BD%91%E8%AE%A4%E8%AF%81%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95/py%E8%84%9A%E6%9C%AC/zddl03_hu_dfe5f4e80a46b257.png 1024w" loading=lazy class=gallery-image data-flex-grow=920 data-flex-basis=2209px></p><p>打包完我们将代码放到自启动目录。无需其它操作，开机即可自行启动运行。</p></section><footer class=article-footer><section class=article-tags><a href=/tags/windows/>Windows</a>
+<a href=/tags/python/>Python</a>
+<a href=/tags/%E8%84%9A%E6%9C%AC/>脚本</a>
+<a href=/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/>自动化</a></section><section class=article-copyright><svg class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><path d="M14.5 9a3.5 4 0 100 6"/></svg>
+<span>CC-BY-SA-4.0</span></section><section class=article-edit><svg class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6.0 00-1.3-3.2 4.2 4.2.0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3.0 00-6.2.0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2.0 00-.1 3.2A4.6 4.6.0 004 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+<span><a href=https://github.com/n10dz/n10dz.github.io/edit/main/content/post/zdrzjb-py/index.md target=_blank rel="noopener noreferrer">在 GitHub 上编辑此页</a></span></section><section class=article-lastmod><svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentcolor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<span>最后更新于 2025-05-15 21:57 +0800</span></section></footer></article><aside class=related-content--wrapper><h2 class=section-title>相关文章</h2><div class=related-content><div class="flex article-list--tile"><article><a href=/p/%E8%A7%A3%E5%86%B3%E5%9B%BD%E4%BA%A7%E4%BF%A1%E5%88%9Blinux%E7%B3%BB%E7%BB%9Fdns%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%A2%AB%E5%BC%BA%E5%88%B6%E8%AE%BE%E7%BD%AE%E4%B8%BA127.0.0.53%E9%97%AE%E9%A2%98/><div class=article-details><h2 class=article-title>解决国产信创Linux系统DNS服务器被强制设置为`127.0.0.53`问题</h2></div></a></article></div></div></aside><script src=https://utteranc.es/client.js repo=n10dz/n10dz.github.io issue-term=pathname crossorigin=anonymous async></script><style>.utterances{max-width:unset}</style><script>let utterancesLoaded=!1;function setUtterancesTheme(e){let t=document.querySelector(".utterances iframe");t&&t.contentWindow.postMessage({type:"set-theme",theme:`github-${e}`},"https://utteranc.es")}addEventListener("message",e=>{if(e.origin!=="https://utteranc.es")return;utterancesLoaded=!0,setUtterancesTheme(document.documentElement.dataset.scheme)}),window.addEventListener("onColorSchemeChange",e=>{if(!utterancesLoaded)return;setUtterancesTheme(e.detail)})</script><footer class=site-footer><section class=copyright>&copy;
+2020 -
+2025 辽西聂德住</section><section class=powerby>使用 <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> 构建<br>主题 <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=3.30.0>Stack</a></b> 由 <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a> 设计</section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+</button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css crossorigin=anonymous></main></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z+KMkF24hUW8WePSA9HM=" crossorigin=anonymous></script><script type=text/javascript src=/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js defer></script><script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e)})()</script><style>@font-face{font-family:maplemono2;src:url(https://n10dz.github.io/font/MapleMono.ttf)format('truetype')}:root{--base-font-family:'MapleMono2';--code-font-family:'MapleMono2'}</style></body></html>

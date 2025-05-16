@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Pages on N10-Blog</title><link>https://n10dz.github.io/page/</link><description>Recent content in Pages on N10-Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>辽西聂德住</copyright><lastBuildDate>Thu, 15 May 2025 21:45:43 +0800</lastBuildDate><atom:link href="https://n10dz.github.io/page/index.xml" rel="self" type="application/rss+xml"/><item><title>文章</title><link>https://n10dz.github.io/archives/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://n10dz.github.io/archives/</guid><description/></item><item><title>About</title><link>https://n10dz.github.io/about/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://n10dz.github.io/about/</guid><description>&lt;style>
+.about-page {
+max-width: 800px;
+margin: 0 auto;
+padding: 20px;
+}
+.about-title {
+text-align: center;
+font-size: 2em;
+margin-bottom: 2em;
+font-weight: normal;
+border: none !important;
+position: relative;
+}
+.about-title::before {
+display: none !important;
+}
+.about-content {
+font-size: 1.1em;
+line-height: 1.8;
+}
+.about-note {
+font-size: 0.95em;
+color: #888;
+margin-top: 0.5em;
+}
+.article-header, .article-footer, .article-metadata, .widget-toc {
+display: none !important;
+}
+&lt;/style>
+&lt;div class="about-page">
+&lt;h1 class="about-title">欢迎来到我的新博客&lt;/h1>
+&lt;div class="about-content">
+&lt;blockquote>
+我为什么要说新博客呢？因为之前的博客被我一不小心delete了，找不回来了。😭
+&lt;/blockquote>
+&lt;p>
+我是&lt;strong>辽西聂德住&lt;/strong>，一个生活在底层的IT运维牛马。你们也可以叫我&lt;strong>N10&lt;/strong>。
+&lt;/p>
+&lt;p class="about-note">
+N10：取自我的姓氏聂的拼音首字母+笔画10笔
+&lt;/p>
+&lt;/div>
+&lt;/div></description></item><item><title>搜索</title><link>https://n10dz.github.io/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://n10dz.github.io/search/</guid><description/></item></channel></rss>
