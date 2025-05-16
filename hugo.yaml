@@ -96,8 +96,8 @@ params:
     article:
         math: false                  # 是否启用数学公式
         toc: true                    # 是否显示目录
-        readingTime: true            # 是否显示阅读时间
-        wordCount: true              # 是否显示字数统计
+        readingTime: false            # 是否显示阅读时间
+        wordCount: false               # 是否显示字数统计
         license:                     # 文章许可配置
             enabled: true            # 是否启用许可
             default: Licensed under CC BY-NC-SA 4.0  # 默认许可协议
@@ -218,7 +218,7 @@ params:
     # OpenGraph配置
     opengraph:
         twitter:                     # Twitter配置
-            site:                    # Twitter用户名
+            site: n10_666              # Twitter用户名
             card: summary_large_image  # 卡片类型
 
     # 默认图片配置
